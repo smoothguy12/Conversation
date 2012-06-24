@@ -5,10 +5,9 @@ using namespace std;
 
 int main()
 {
-  Game::Context* context;
+  Game::Context context;
 
-  context = new Game::Context();
-  context->run();
+  context.run();
   return 0;
 }
 

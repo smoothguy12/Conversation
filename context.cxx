@@ -1,6 +1,7 @@
 #include "context.hxx"
 #include "window.hxx"
 #include "log.hxx"
+#include "settings.hxx"
 
 namespace Game
 {
@@ -13,6 +14,8 @@ namespace Game
 
   Context::~Context()
   {
+    Core::Settings::destroyInstance();
+    Core::Window::destroyInstance();
     log::write(log::message, "Destroyed Game::Context");
   }
 
@@ -34,5 +37,10 @@ namespace Game
     window = Core::Window::getInstance();
     window->update();
     window->draw();
+  }
+
+  void Context::stop()
+  {
+    m_running = false;
   }
 }

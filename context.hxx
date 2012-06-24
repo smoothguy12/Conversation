@@ -11,6 +11,7 @@ namespace Game
     Context();
     ~Context();
     void run();
+    void stop();
 
   private:
     void update();
