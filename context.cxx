@@ -1,0 +1,38 @@
+#include "context.hxx"
+#include "window.hxx"
+#include "log.hxx"
+
+namespace Game
+{
+  Context::Context()
+  {
+    m_running = true;
+
+    log::write(log::message, "Initialized Game::Context");
+  }
+
+  Context::~Context()
+  {
+    log::write(log::message, "Destroyed Game::Context");
+  }
+
+  void Context::run()
+  {
+    Core::Window* window;
+
+    window = Core::Window::getInstance();
+    while (m_running and window->isShown())
+      {
+        this->update();
+      }
+  }
+
+  void Context::update()
+  {
+    Core::Window* window;
+
+    window = Core::Window::getInstance();
+    window->update();
+    window->draw();
+  }
+}
