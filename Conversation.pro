@@ -11,7 +11,11 @@ SOURCES += \
     window.cxx \
     settings.cxx \
     log.cxx \
-    reader.cxx
+    reader.cxx \
+    introstate.cxx \
+    playstate.cxx \
+    observer.cxx \
+    observable.cxx
 
 HEADERS += \
     conversation.hxx \
@@ -21,7 +25,11 @@ HEADERS += \
     window.hxx \
     settings.hxx \
     log.hxx \
-    reader.hxx
+    reader.hxx \
+    introstate.hxx \
+    playstate.hxx \
+    observer.hxx \
+    observable.hxx
 
 LIBS += -L/usr/include/SFML -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 LIBS += -L/usr/include/jsoncpp -ljsoncpp

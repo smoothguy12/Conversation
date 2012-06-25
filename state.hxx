@@ -1,12 +1,13 @@
 #ifndef STATE_HXX
 #define STATE_HXX
+#include "observer.hxx"
 
 namespace Game
 {
-  class State
+  class State : public Core::Observer
   {
   public:
-    virtual ~State();
+    virtual ~State() {}
     virtual void execute() = 0;
     virtual void activate(bool activate) = 0;
 

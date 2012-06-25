@@ -44,4 +44,16 @@ namespace Core
           }
       }
   }
+
+  void Window::addObserver(Observer* observer, sf::Event::EventType eventType)
+  {
+  }
+
+  void Window::removeObserver(Observer* observer)
+  {
+  }
+
+  void Window::removeObserver(Observer* observer, sf::Event::EventType eventType)
+  {
+  }
 }

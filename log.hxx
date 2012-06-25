@@ -10,6 +10,7 @@ namespace log
     error = 2,
     warning = 3,
     message = 4,
+    timmy = 5,
     all = 9
   };
 

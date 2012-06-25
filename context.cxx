@@ -2,12 +2,14 @@
 #include "window.hxx"
 #include "log.hxx"
 #include "settings.hxx"
+#include "introstate.hxx"
 
 namespace Game
 {
   Context::Context()
   {
     m_running = true;
+    m_state = new IntroState();
 
     log::write(log::message, "Initialized Game::Context");
   }
@@ -37,10 +39,25 @@ namespace Game
     window = Core::Window::getInstance();
     window->update();
     window->draw();
+
+    m_state->execute();
   }
 
   void Context::stop()
   {
     m_running = false;
+  }
+
+  void Context::enlist(State* state)
+  {
+    // FIXME: Error checks
+    m_states.push_back(state);
+  }
+
+  void Context::setState(State* state)
+  {
+    m_state->activate(false);
+    m_state = state;
+    m_state->activate(true);
   }
 }
