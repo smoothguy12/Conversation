@@ -13,7 +13,7 @@ namespace Core
     Singleton()                     {}
     Singleton(const T&)             {}
     Singleton& operator=(const T&)  {}
-    ~Singleton()                    {}
+    virtual ~Singleton()            {}
 
     static T*   m_instance;
   };
