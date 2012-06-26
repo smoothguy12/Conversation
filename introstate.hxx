@@ -11,8 +11,12 @@ namespace Game
   public:
     IntroState();
     ~IntroState();
+
+    // State
     void execute();
     void activate(bool active);
+
+    // Observer
     void notify(sf::Event& event);
     std::string toString();
   };

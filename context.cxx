@@ -48,6 +48,7 @@ namespace Game
     m_running = false;
   }
 
+  // State
   void Context::enlist(State* state)
   {
     // FIXME: Error checks

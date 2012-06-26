@@ -15,9 +15,10 @@ namespace Game
     log::write(log::message, "Destroyed Game::IntroState");
   }
 
+  // State
   void IntroState::execute()
   {
-    log::write(log::timmy, "Hello Intro");
+    log::write(log::hint, "Hello Intro");
   }
 
   void IntroState::activate(bool active)
@@ -32,11 +33,17 @@ namespace Game
     m_active = active;
   }
 
+  // Observer
   void IntroState::notify(sf::Event& event)
   {
+    if (m_active)
+      {
+
+      }
   }
 
   std::string IntroState::toString()
   {
+    return ("Game::IntroState");
   }
 }

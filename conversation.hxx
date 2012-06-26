@@ -1,7 +1,7 @@
 #ifndef CONVERSATION_HXX
 #define CONVERSATION_HXX
 
-namespace Conversation
+namespace RPG
 {
   class Conversation
   {

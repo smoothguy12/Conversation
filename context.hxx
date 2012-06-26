@@ -12,6 +12,8 @@ namespace Game
     ~Context();
     void run();
     void stop();
+
+    // State
     void enlist(State* state);
     void setState(State* state);
 
@@ -19,6 +21,8 @@ namespace Game
     void update();
 
     bool                    m_running;
+
+    // State
     std::list<State*>       m_states;
     State*                  m_state;
   };
