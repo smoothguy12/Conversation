@@ -17,7 +17,7 @@ namespace Game
 
   void PlayState::execute()
   {
-    log::write(log::timmy, "Hello Play");
+    log::write(log::hint, "Hello Play");
   }
 
   void PlayState::activate(bool active)

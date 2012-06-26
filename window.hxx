@@ -4,7 +4,9 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
 #include "observable.hxx"
+#include "observer.hxx"
 #include <list>
+#include <map>
 
 namespace Core
 {
@@ -27,7 +29,7 @@ namespace Core
 
     sf::RenderWindow  m_window;
     sf::Event         m_event;
-    std::list<Observer*> m_observers;
+    std::map<sf::Event::EventType, std::list<Observer*> > m_observers;
   };
 }
 

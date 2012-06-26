@@ -3,6 +3,7 @@
 #include "log.hxx"
 #include "settings.hxx"
 #include "introstate.hxx"
+#include "playstate.hxx"
 
 namespace Game
 {
@@ -10,6 +11,9 @@ namespace Game
   {
     m_running = true;
     m_state = new IntroState();
+
+    // We should wait a little before entering IntroState (may'be LoadingState ?)
+    m_state->activate(true);
 
     log::write(log::message, "Initialized Game::Context");
   }
