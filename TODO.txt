@@ -1,0 +1,4 @@
+TODO
+====
+
+- Use the JSON Parser from Qt 5.0 instead of JsonCpp
