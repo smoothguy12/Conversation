@@ -8,7 +8,6 @@ namespace Core
   class Observer
   {
   public:
-    virtual ~Observer() {}
     virtual void notify(sf::Event& event) = 0;
     virtual std::string toString() = 0;
   };

@@ -4,13 +4,19 @@
 
 namespace Game
 {
-  class PlayState : public State
+  class PlayingState : public State
   {
   public:
-    PlayState();
-    ~PlayState();
+    PlayingState();
+    ~PlayingState();
+
+    // State
     void execute();
     void activate(bool active);
+
+    // Observer
+    void notify(sf::Event &event);
+    std::string toString();
   };
 }
 

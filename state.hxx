@@ -7,7 +7,6 @@ namespace Game
   class State : public Core::Observer
   {
   public:
-    virtual ~State() {}
     virtual void execute() = 0;
     virtual void activate(bool activate) = 0;
 

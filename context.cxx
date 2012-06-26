@@ -3,7 +3,7 @@
 #include "log.hxx"
 #include "settings.hxx"
 #include "introstate.hxx"
-#include "playstate.hxx"
+#include "playingstate.hxx"
 
 namespace Game
 {
