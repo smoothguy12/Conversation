@@ -14,6 +14,7 @@ namespace Core
                                   s->get<int>("window.height")),
                     s->get<std::string>("window.title"));
     m_window.setFramerateLimit(s->get<int>("window.fps_limit"));
+    m_window.setKeyRepeatEnabled(s->get<bool>("input.key_repeat"));
 
     log::write(log::message, "Initialized Core::Window");
   }

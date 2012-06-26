@@ -41,7 +41,21 @@ namespace Core
       }
     else
       {
-        return (m_content.get(key, "").asString());
+        return (m_content.get(key, "STR NOT FOUND").asString());
+      }
+  }
+
+  template<>
+  bool Settings::get<bool>(std::string key)
+  {
+    if (!m_content.isMember(key))
+      {
+        log::write(log::error, "Core::Settings: Couldn't find key (" + key + ")");
+        return (false);
+      }
+    else
+      {
+        return (m_content.get(key, false).asBool());
       }
   }
 }

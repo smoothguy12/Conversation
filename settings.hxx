@@ -26,6 +26,9 @@ namespace Core
 
   template<>
   std::string Settings::get<std::string>(std::string key);
+
+  template<>
+  bool Settings::get<bool>(std::string key);
 }
 
 #endif // SETTINGS_HXX
