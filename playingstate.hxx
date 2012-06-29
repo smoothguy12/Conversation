@@ -1,13 +1,14 @@
 #ifndef PLAYSTATE_HXX
 #define PLAYSTATE_HXX
 #include "state.hxx"
+#include "context.hxx"
 
 namespace Game
 {
   class PlayingState : public State
   {
   public:
-    PlayingState();
+    PlayingState(Context* context);
     ~PlayingState();
 
     // State

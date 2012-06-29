@@ -1,25 +1,32 @@
 #include "playingstate.hxx"
 #include <SFML/Window/Event.hpp>
 #include "log.hxx"
+#include "context.hxx"
+#include "window.hxx"
 
 namespace Game
 {
-  PlayingState::PlayingState()
+  PlayingState::PlayingState(Context* context)
   {
     m_active = false;
+    m_context = context;
+    m_context->enlist(this);
+
+    Core::Window::getInstance()->addObserver(this, sf::Event::KeyPressed);
 
     log::write(log::message, "Initialized Game::PlayState");
   }
 
   PlayingState::~PlayingState()
   {
+    Core::Window::getInstance()->removeObserver(this);
     log::write(log::message, "Destroyed Game::PlayState");
   }
 
   // State
   void PlayingState::execute()
   {
-    log::write(log::hint, "Playing");
+    log::write(log::flood, "Playing");
   }
 
   void PlayingState::activate(bool active)
@@ -39,9 +46,11 @@ namespace Game
   {
     if (m_active)
       {
-      }
-    else
-      {
+        log::write(log::hint, this->toString() + " caught an event.");
+
+        if (event.type == sf::Event::KeyPressed)
+          {
+          }
       }
   }
 

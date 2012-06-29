@@ -3,13 +3,14 @@
 #include "state.hxx"
 #include <string>
 #include <SFML/Window/Event.hpp>
+#include "context.hxx"
 
 namespace Game
 {
   class IntroState : public State
   {
   public:
-    IntroState();
+    IntroState(Context* context);
     ~IntroState();
 
     // State

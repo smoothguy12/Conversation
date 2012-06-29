@@ -2,28 +2,32 @@
 #include <SFML/Window/Event.hpp>
 #include "window.hxx"
 #include "log.hxx"
+#include "context.hxx"
+#include "playingstate.hxx"
 
 namespace Game
 {
-  IntroState::IntroState()
+  IntroState::IntroState(Context* context)
   {
-    Core::Window::getInstance()->addObserver(this, sf::Event::KeyPressed);
-
     m_active = false;
+    m_context = context;
+    m_context->enlist(this);
+
+    Core::Window::getInstance()->addObserver(this, sf::Event::KeyPressed);
 
     log::write(log::message, "Initialized Game::IntroState");
   }
 
   IntroState::~IntroState()
   {
-    Core::Window::getInstance()->removeObserver(this, sf::Event::KeyPressed);
+    Core::Window::getInstance()->removeObserver(this);
     log::write(log::message, "Destroyed Game::IntroState");
   }
 
   // State
   void IntroState::execute()
   {
-    //    log::write(log::hint, "Hello Intro");
+    log::write(log::flood, "Hello Intro");
   }
 
   void IntroState::activate(bool active)
@@ -44,6 +48,14 @@ namespace Game
     if (m_active)
       {
         log::write(log::hint, this->toString() + " caught an event.");
+
+        if (event.type == sf::Event::KeyPressed)
+          {
+            if (event.key.code == sf::Keyboard::Return)
+              {
+                m_context->setState(new PlayingState(m_context));
+              }
+          }
       }
   }
 

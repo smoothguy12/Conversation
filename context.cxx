@@ -10,7 +10,7 @@ namespace Game
   Context::Context()
   {
     m_running = true;
-    m_state = new IntroState();
+    m_state = new IntroState(this);
 
     // We should wait a little before entering IntroState (may'be LoadingState ?)
     m_state->activate(true);
@@ -20,6 +20,14 @@ namespace Game
 
   Context::~Context()
   {
+    std::list<State*>::iterator its;
+
+    for (its = m_states.begin(); its != m_states.end(); its++)
+      {
+        delete(*its);
+        its = m_states.erase(its);
+      }
+
     Core::Settings::destroyInstance();
     Core::Window::destroyInstance();
     log::write(log::message, "Destroyed Game::Context");
@@ -61,6 +69,7 @@ namespace Game
 
   void Context::setState(State* state)
   {
+    log::write(log::trivial, "Switching from " + m_state->toString() + " to " + state->toString());
     m_state->activate(false);
     m_state = state;
     m_state->activate(true);

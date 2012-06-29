@@ -5,6 +5,7 @@
 
 namespace Game
 {
+  class State;
   class Context
   {
   public:
