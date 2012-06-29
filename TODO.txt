@@ -1,4 +1,19 @@
 TODO
 ====
 
+Short-term :
+============
+- Factory
+- Entities
+- Handle rendering IRenderable objects in Window
+- Managers (Music, Speech, Texture, Text)
+- Mixer (Sounds)
+- Controllers
+
+Long-term :
+===========
 - Use the JSON Parser from Qt 5.0 instead of JsonCpp
+- (UNSURE) Write specialized classes for Json reading (which would avoid Json::Value
+dependencies in Managers) such as ListReader, HashMapReader...
+- Fancy effects on texts
+- Integrate a GUI library, or design a new one
