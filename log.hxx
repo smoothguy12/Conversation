@@ -11,6 +11,8 @@ namespace log
     warning = 3,
     message = 4,
     hint = 5,
+    trivial = 6,
+    flood = 7,
     all = 9
   };
 

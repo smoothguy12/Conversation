@@ -1,6 +1,6 @@
 #include "log.hxx"
 #include <iostream>
-#define ERRLVL 9
+#define ERRLVL 6
 
 
 namespace log
