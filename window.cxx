@@ -62,8 +62,27 @@ namespace Core
 
   void Window::addObserver(Observer* observer, sf::Event::EventType eventType)
   {
-    // FIXME: Error checks
-    m_observers[eventType].push_back(observer);
+    std::map<sf::Event::EventType, std::list<Observer*> >::iterator itm;
+    std::list<Observer*>::iterator itl;
+    bool found;
+
+    found = false;
+
+    for (itm = m_observers.begin(); itm != m_observers.end(); itm++)
+      {
+        for (itl = itm->second.begin(); itl != itm->second.end(); itl++)
+          {
+            if ( (*itl) == observer)
+              {
+                found = true;
+              }
+          }
+      }
+
+    if (found)
+      log::write(log::warning, "Called Window::addObserver() more than one time.");
+    else
+      m_observers[eventType].push_back(observer);
   }
 
   void Window::removeObserver(Observer* observer)
@@ -78,6 +97,10 @@ namespace Core
             if ( (*itl) == observer)
               {
                 itl = itm->second.erase(itl);
+              }
+            else
+              {
+                itl++;
               }
           }
       }
@@ -100,6 +123,10 @@ namespace Core
                   }
                 else
                   itl++;
+              }
+            else
+              {
+                itl++;
               }
           }
       }

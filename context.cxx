@@ -22,7 +22,7 @@ namespace Game
   {
     std::list<State*>::iterator its;
 
-    for (its = m_states.begin(); its != m_states.end(); its++)
+    for (its = m_states.begin(); its != m_states.end(); )
       {
         delete(*its);
         its = m_states.erase(its);
@@ -63,8 +63,23 @@ namespace Game
   // State
   void Context::enlist(State* state)
   {
-    // FIXME: Error checks
-    m_states.push_back(state);
+    std::list<State*>::iterator itl;
+    bool found;
+
+    found = false;
+
+    for (itl = m_states.begin(); itl != m_states.end(); itl++)
+      {
+        if ( (*itl) == state)
+          {
+            found = true;
+          }
+      }
+
+    if (found)
+      log::write(log::warning, "Called Context::enlist() more than one time.");
+    else
+      m_states.push_back(state);
   }
 
   void Context::setState(State* state)
