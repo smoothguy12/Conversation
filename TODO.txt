@@ -17,3 +17,11 @@ Long-term :
 dependencies in Managers) such as ListReader, HashMapReader...
 - Fancy effects on texts
 - Integrate a GUI library, or design a new one
+
+Unsure :
+========
+
+- Current Observer implementation is not corresponding to the Observer pattern since the
+Observable entity should notify its Observers on each new event detection and have a public
+method for Observers to get this particular event. Nevertheless, I'm not sure it would be
+either worth the time or adequate.
