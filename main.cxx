@@ -7,7 +7,6 @@ int main()
 {
   Game::Context context;
 
-  context.run();
+  context.start();
   return 0;
 }
-

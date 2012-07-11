@@ -11,7 +11,7 @@ namespace Game
   public:
     Context();
     ~Context();
-    void run();
+    void start();
     void stop();
 
     // State

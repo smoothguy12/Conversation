@@ -33,7 +33,7 @@ namespace Game
     log::write(log::message, "Destroyed Game::Context");
   }
 
-  void Context::run()
+  void Context::start()
   {
     Core::Window* window;
 
