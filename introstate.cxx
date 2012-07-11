@@ -13,14 +13,14 @@ namespace Game
     m_context = context;
     m_context->enlist(this);
 
-    Core::Window::getInstance()->addObserver(this, sf::Event::KeyPressed);
+    Core::Window::getInstance()->attach(this, sf::Event::KeyPressed);
 
     log::write(log::message, "Initialized Game::IntroState");
   }
 
   IntroState::~IntroState()
   {
-    Core::Window::getInstance()->removeObserver(this);
+    Core::Window::getInstance()->detach(this);
     log::write(log::message, "Destroyed Game::IntroState");
   }
 

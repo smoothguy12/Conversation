@@ -8,9 +8,9 @@ namespace Core
   class Observable
   {
   public:
-    virtual void addObserver(Observer* observer, sf::Event::EventType eventType) = 0;
-    virtual void removeObserver(Observer* observer) = 0;
-    virtual void removeObserver(Observer* observer, sf::Event::EventType eventType) = 0;
+    virtual void attach(Observer* observer, sf::Event::EventType eventType) = 0;
+    virtual void detach(Observer* observer) = 0;
+    virtual void detach(Observer* observer, sf::Event::EventType eventType) = 0;
   };
 }
 

@@ -19,9 +19,9 @@ namespace Core
     void update();
 
     // Observable
-    void addObserver(Observer* observer, sf::Event::EventType eventType);
-    void removeObserver(Observer* observer);
-    void removeObserver(Observer* observer, sf::Event::EventType eventType);
+    void attach(Observer* observer, sf::Event::EventType eventType);
+    void detach(Observer* observer);
+    void detach(Observer* observer, sf::Event::EventType eventType);
 
   private:
     Window();

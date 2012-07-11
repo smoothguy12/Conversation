@@ -60,7 +60,7 @@ namespace Core
       }
   }
 
-  void Window::addObserver(Observer* observer, sf::Event::EventType eventType)
+  void Window::attach(Observer* observer, sf::Event::EventType eventType)
   {
     std::map<sf::Event::EventType, std::list<Observer*> >::iterator itm;
     std::list<Observer*>::iterator itl;
@@ -85,7 +85,7 @@ namespace Core
       m_observers[eventType].push_back(observer);
   }
 
-  void Window::removeObserver(Observer* observer)
+  void Window::detach(Observer* observer)
   {
     std::map<sf::Event::EventType, std::list<Observer*> >::iterator itm;
     std::list<Observer*>::iterator itl;
@@ -106,7 +106,7 @@ namespace Core
       }
   }
 
-  void Window::removeObserver(Observer* observer, sf::Event::EventType eventType)
+  void Window::detach(Observer* observer, sf::Event::EventType eventType)
   {
     std::map<sf::Event::EventType, std::list<Observer*> >::iterator itm;
     std::list<Observer*>::iterator itl;
