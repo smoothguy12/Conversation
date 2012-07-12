@@ -15,7 +15,10 @@ SOURCES += \
     introstate.cxx \
     observer.cxx \
     observable.cxx \
-    playingstate.cxx
+    playingstate.cxx \
+    entityfactory.cxx \
+    entity.cxx \
+    character.cxx
 
 HEADERS += \
     conversation.hxx \
@@ -29,7 +32,10 @@ HEADERS += \
     introstate.hxx \
     observer.hxx \
     observable.hxx \
-    playingstate.hxx
+    playingstate.hxx \
+    entityfactory.hxx \
+    entity.hxx \
+    character.hxx
 
 LIBS += -L/usr/include/SFML -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 LIBS += -L/usr/include/jsoncpp -ljsoncpp

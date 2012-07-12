@@ -5,6 +5,10 @@
 #include "introstate.hxx"
 #include "playingstate.hxx"
 
+// TEMP
+#include "entityfactory.hxx"
+#include "character.hxx"
+
 namespace Game
 {
   Context::Context()
@@ -14,6 +18,12 @@ namespace Game
 
     // We should wait a little before entering IntroState (may'be LoadingState ?)
     m_state->activate(true);
+
+    // Factory initialization
+    Core::EntityFactory::getInstance()->learn<Entities::Character>("character");
+
+    Entities::Entity* character = Core::EntityFactory::getInstance()->give("character");
+    character->initialize();
 
     log::write(log::message, "Initialized Game::Context");
   }
