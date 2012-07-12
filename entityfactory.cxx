@@ -3,6 +3,18 @@
 
 namespace Core
 {
+  EntityFactory::~EntityFactory()
+  {
+    std::map<std::string, Entities::Entity*>::iterator it;
+
+    for (it = m_prototypes.begin(); it != m_prototypes.end(); it++)
+      {
+        delete(it->second);
+      }
+
+    m_prototypes.clear();
+  }
+
   Entities::Entity*   EntityFactory::give(const std::string& name)
   {
     std::map<std::string, Entities::Entity*>::iterator it;
@@ -24,7 +36,9 @@ namespace Core
     if (found)
       return (tmp);
     else
-      log::write(log::error, "Tried to create unknown object!");
-    // TODO: Raise exception
+      {
+        log::write(log::fatal, "Tried to create an unknown object!");
+        throw new std::string("Tried to create an unknown object!");
+      }
   }
 }

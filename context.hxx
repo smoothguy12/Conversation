@@ -2,6 +2,8 @@
 #define CONTEXT_HXX
 #include <list>
 #include "state.hxx"
+#include <vector>
+#include "character.hxx"
 
 namespace Game
 {
@@ -26,6 +28,9 @@ namespace Game
     // State
     std::list<State*>       m_states;
     State*                  m_state;
+
+    // Entities
+    std::vector<Entities::Entity*> m_characters;
   };
 }
 

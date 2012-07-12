@@ -7,7 +7,6 @@
 
 // TEMP
 #include "entityfactory.hxx"
-#include "character.hxx"
 
 namespace Game
 {
@@ -25,12 +24,15 @@ namespace Game
     Entities::Entity* character = Core::EntityFactory::getInstance()->give("character");
     character->initialize();
 
+    m_characters.push_back(character);
+
     log::write(log::message, "Initialized Game::Context");
   }
 
   Context::~Context()
   {
     std::list<State*>::iterator its;
+    std::vector<Entities::Entity*>::iterator itc;
 
     for (its = m_states.begin(); its != m_states.end(); )
       {
@@ -38,7 +40,14 @@ namespace Game
         its = m_states.erase(its);
       }
 
+    for (itc = m_characters.begin(); itc != m_characters.end(); )
+      {
+        delete(*itc);
+        itc = m_characters.erase(itc);
+      }
+
     Core::Settings::destroyInstance();
+    Core::EntityFactory::destroyInstance();
     Core::Window::destroyInstance();
     log::write(log::message, "Destroyed Game::Context");
   }

@@ -13,6 +13,7 @@ namespace Core
   public:
     friend class Singleton<EntityFactory>;
 
+    ~EntityFactory();
     template<typename T>
     void learn(const std::string& name);
 

@@ -5,10 +5,12 @@ namespace Entities
 {
   Character::Character()
   {
+    log::write(log::message, "One Game::Character new'd.");
   }
 
   Character::~Character()
   {
+    log::write(log::message, "One Game::Character deleted.");
   }
 
   Entity* Character::clone()
@@ -24,6 +26,7 @@ namespace Entities
 
   void Character::destroy()
   {
+    log::write(log::message, "One Game::Character destroyed.");
     m_destroyed = true;
   }
 }
