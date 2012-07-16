@@ -61,7 +61,7 @@ namespace Game
   {
     if (m_active)
       {
-        log::putln(log::hint, this->toString() + " caught an event.");
+        log::putln(log::flood, this->toString() + " caught an event.");
 
         if (event.type == sf::Event::KeyPressed)
           {
