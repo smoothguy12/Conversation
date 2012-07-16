@@ -7,6 +7,7 @@
 
 // TEMP
 #include "entityfactory.hxx"
+#include "mixer.hxx"
 
 namespace Game
 {
@@ -21,10 +22,15 @@ namespace Game
     // Factory initialization
     Core::EntityFactory::getInstance()->learn<Entities::Character>("character");
 
+    // Temporary Character initialization
     Entities::Entity* character = Core::EntityFactory::getInstance()->give("character");
     character->initialize();
 
     m_characters.push_back(character);
+
+    // Temporary Mixer Initialization
+    Core::Mixer* mixer = Core::Mixer::getInstance();
+    mixer->play();
 
     log::write(log::message, "Initialized Game::Context");
   }
@@ -46,6 +52,7 @@ namespace Game
         itc = m_characters.erase(itc);
       }
 
+    Core::Mixer::destroyInstance();
     Core::Settings::destroyInstance();
     Core::EntityFactory::destroyInstance();
     Core::Window::destroyInstance();

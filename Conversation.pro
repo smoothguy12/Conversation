@@ -18,7 +18,11 @@ SOURCES += \
     playingstate.cxx \
     entityfactory.cxx \
     entity.cxx \
-    character.cxx
+    character.cxx \
+    drawable.cxx \
+    transformable.cxx \
+    mixer.cxx \
+    vectorreader.cxx
 
 HEADERS += \
     conversation.hxx \
@@ -35,7 +39,11 @@ HEADERS += \
     playingstate.hxx \
     entityfactory.hxx \
     entity.hxx \
-    character.hxx
+    character.hxx \
+    drawable.hxx \
+    transformable.hxx \
+    mixer.hxx \
+    vectorreader.hxx
 
 LIBS += -L/usr/include/SFML -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 LIBS += -L/usr/include/jsoncpp -ljsoncpp
