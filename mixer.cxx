@@ -18,7 +18,7 @@ namespace Core
     for (index = 0; index < vector.size(); index++)
       {
         sf::Music* music = new sf::Music();
-        log::insert(log::trivial, "Loading (Music) : " + vector[index] + " ...");
+        log::insert(log::trivial, "Loading (Music) : " + vector[index] + "... ");
 
         if (!music->openFromFile("data/Musics/" + vector[index]))
           {

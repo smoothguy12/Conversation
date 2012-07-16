@@ -13,8 +13,7 @@ namespace Game
     m_context->enlist(this);
 
     Core::Window::getInstance()->attach(this, sf::Event::KeyPressed);
-
-    log::write(log::message, "Initialized Game::PlayState");
+    log::write(log::message, "Initialized Game::PlayingState");
   }
 
   PlayingState::~PlayingState()
