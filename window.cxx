@@ -16,24 +16,32 @@ namespace Core
     m_window.setFramerateLimit(s->get<int>("window.fps_limit"));
     m_window.setKeyRepeatEnabled(s->get<bool>("input.key_repeat"));
 
-    log::write(log::message, "Initialized Core::Window");
+    log::putln(log::message, "Initialized Core::Window");
   }
+
+
 
   Window::~Window()
   {
-    log::write(log::message, "Destroyed Core::Window");
+    log::putln(log::message, "Destroyed Core::Window");
   }
+
+
 
   bool Window::isShown()
   {
-    return (m_window.isOpen());
+    return m_window.isOpen();
   }
+
+
 
   void Window::draw()
   {
     m_window.clear();
     m_window.display();
   }
+
+
 
   void Window::update()
   {
@@ -60,6 +68,8 @@ namespace Core
       }
   }
 
+
+
   void Window::attach(Observer* observer, sf::Event::EventType eventType)
   {
     std::map<sf::Event::EventType, std::list<Observer*> >::iterator itm;
@@ -80,10 +90,12 @@ namespace Core
       }
 
     if (found)
-      log::write(log::warning, "Called Window::addObserver() more than one time.");
+      log::putln(log::warning, "Called Window::addObserver() more than one time.");
     else
       m_observers[eventType].push_back(observer);
   }
+
+
 
   void Window::detach(Observer* observer)
   {
@@ -105,6 +117,8 @@ namespace Core
           }
       }
   }
+
+
 
   void Window::detach(Observer* observer, sf::Event::EventType eventType)
   {

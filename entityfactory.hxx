@@ -32,7 +32,7 @@ namespace Core
       }
     else
       {
-        log::write(log::error, "EntityFactory is unable to learn " + name);
+        log::putln(log::error, "EntityFactory is unable to learn " + name);
       }
   }
 }

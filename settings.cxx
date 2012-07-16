@@ -6,24 +6,31 @@ namespace Core
 {
   Settings::Settings()
   {
-    m_reader = new Reader("data/settings.json");
+    m_reader  = new Reader("data/System/settings.json");
     m_content = m_reader->get();
-    log::write(log::message, "Initialized Core::Settings");
+
+    log::putln(log::message, "Initialized Core::Settings");
   }
+
+
 
   Settings::~Settings()
   {
-    delete(m_reader);
-    log::write(log::message, "Destroyed Core::Settings");
+    delete m_reader;
+
+    log::putln(log::message, "Destroyed Core::Settings");
   }
+
+
 
   template<>
   int Settings::get<int>(std::string key)
   {
     if (!m_content.isMember(key))
       {
-        log::write(log::error, "Core::Settings: Couldn't find key (" + key + ")");
-        return (-1);
+        log::putln(log::error, "Core::Settings: Couldn't find key (" + key + ")");
+
+        return -1;
       }
     else
       {
@@ -31,13 +38,16 @@ namespace Core
       }
   }
 
+
+
   template<>
   std::string Settings::get<std::string>(std::string key)
   {
     if (!m_content.isMember(key))
       {
-        log::write(log::error, "Core::Settings: Couldn't find key (" + key + ")");
-        return ("STR NOT FOUND");
+        log::putln(log::error, "Core::Settings: Couldn't find key (" + key + ")");
+
+        return "STR NOT FOUND";
       }
     else
       {
@@ -45,13 +55,16 @@ namespace Core
       }
   }
 
+
+
   template<>
   bool Settings::get<bool>(std::string key)
   {
     if (!m_content.isMember(key))
       {
-        log::write(log::error, "Core::Settings: Couldn't find key (" + key + ")");
-        return (false);
+        log::putln(log::error, "Core::Settings: Couldn't find key (" + key + ")");
+
+        return false;
       }
     else
       {

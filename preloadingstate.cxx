@@ -14,14 +14,14 @@ namespace Game
     m_context = context;
     m_context->enlist(this);
 
-    log::write(log::message, "Initialized Game::PreloadingState");
+    log::putln(log::message, "Initialized Game::PreloadingState");
   }
 
 
 
   PreloadingState::~PreloadingState()
   {
-    log::write(log::message, "Destroyed Game::PreloadingState");
+    log::putln(log::message, "Destroyed Game::PreloadingState");
   }
 
 
@@ -29,7 +29,7 @@ namespace Game
   // State
   void PreloadingState::execute()
   {
-    log::write(log::flood, "Preloading");
+    log::putln(log::flood, "Preloading");
   }
 
 
@@ -56,6 +56,10 @@ namespace Game
   {
     if (m_active)
       {
+        // Avoid unused parameter warning...
+        if (event.type == sf::Event::Closed)
+          {
+          }
       }
   }
 
@@ -63,6 +67,6 @@ namespace Game
 
   std::string PreloadingState::toString()
   {
-    return ("Game::PreloadingState");
+    return "Game::PreloadingState";
   }
 }

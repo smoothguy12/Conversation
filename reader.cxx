@@ -16,23 +16,27 @@ namespace Core
 
     if (!parsed)
       {
-        log::write(log::error, "Failed to parse " + filename + " " + reader.getFormattedErrorMessages());
+        log::putln(log::error, "Failed to parse " + filename + " " + reader.getFormattedErrorMessages());
       }
 
-    log::write(log::message, "Initialized Core::Reader");
+    log::putln(log::message, "Initialized Core::Reader");
   }
+
+
 
   Reader::~Reader()
   {
-    log::write(log::message, "Destroyed Core::Reader");
+    log::putln(log::message, "Destroyed Core::Reader");
   }
+
+
 
   Json::Value& Reader::get()
   {
     if (m_content.empty())
       {
-        log::write(log::warning, "!!! " + m_filename + " is empty");
+        log::putln(log::warning, "!!! " + m_filename + " is empty");
       }
-    return (m_content);
+    return m_content;
   }
 }

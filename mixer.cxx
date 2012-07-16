@@ -8,7 +8,7 @@ namespace Core
   Mixer::Mixer()
   {
     std::vector<std::string> vector;
-    VectorReader vector_reader("data/musics.json");
+    VectorReader vector_reader("data/System/musics.json");
     unsigned int index;
 
     vector    = vector_reader.get();
@@ -18,15 +18,17 @@ namespace Core
     for (index = 0; index < vector.size(); index++)
       {
         sf::Music* music = new sf::Music();
-        log::insert(log::trivial, "Loading (Music) : " + vector[index] + "... ");
+
+        log::put(log::trivial, "Loading (Music) : " + vector[index] + "... ");
 
         if (!music->openFromFile("data/Musics/" + vector[index]))
           {
-            log::write(log::trivial, "Fail!");
+            log::putln(log::trivial, "Fail!");
           }
         else
           {
-            log::write(log::trivial, "Ok.");
+            log::putln(log::trivial, "Ok.");
+
             m_musics.push_back(music);
           }
       }
@@ -34,7 +36,7 @@ namespace Core
     if (m_musics.size() > 0)
         m_valid = true;
 
-    log::write(log::message, "Initialized Core::Mixer");
+    log::putln(log::message, "Initialized Core::Mixer");
   }
 
 
@@ -49,7 +51,7 @@ namespace Core
         it = m_musics.erase(it);
       }
 
-    log::write(log::message, "Destroyed Core::Mixer");
+    log::putln(log::message, "Destroyed Core::Mixer");
   }
 
 
@@ -65,7 +67,7 @@ namespace Core
       }
     else
       {
-        log::write(log::error, "Tried to read beyond Music list size.");
+        log::putln(log::error, "Tried to read beyond Music list size.");
       }
   }
 

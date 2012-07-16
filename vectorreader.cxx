@@ -20,10 +20,10 @@ namespace Core
       }
     else
       {
-        log::write(log::error, "Invalid structure for file " + filename);
+        log::putln(log::error, "Invalid structure for file " + filename);
       }
 
-    log::write(log::message, "Initialized Core::Reader");
+    log::putln(log::message, "Initialized Core::Reader");
   }
 
 
@@ -31,7 +31,8 @@ namespace Core
   VectorReader::~VectorReader()
   {
     m_vector.clear();
-    log::write(log::message, "Destroyed Core::ListReader");
+
+    log::putln(log::message, "Destroyed Core::ListReader");
   }
 
 

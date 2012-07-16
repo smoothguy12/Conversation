@@ -16,8 +16,8 @@ namespace log
     all = 9
   };
 
-  void write(unsigned int err_lvl, std::string str);
-  void insert(unsigned int err_lvl, std::string str);
+  void put(unsigned int err_lvl, std::string str);
+  void putln(unsigned int err_lvl, std::string str);
 }
 
 #endif // LOG_HXX

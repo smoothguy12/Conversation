@@ -13,20 +13,28 @@ namespace Game
     m_context->enlist(this);
 
     Core::Window::getInstance()->attach(this, sf::Event::KeyPressed);
-    log::write(log::message, "Initialized Game::PlayingState");
+
+    log::putln(log::message, "Initialized Game::PlayingState");
   }
+
+
 
   PlayingState::~PlayingState()
   {
     Core::Window::getInstance()->detach(this);
-    log::write(log::message, "Destroyed Game::PlayState");
+
+    log::putln(log::message, "Destroyed Game::PlayingState");
   }
+
+
 
   // State
   void PlayingState::execute()
   {
-    log::write(log::flood, "Playing");
+    log::putln(log::flood, "Playing");
   }
+
+
 
   void PlayingState::activate(bool active)
   {
@@ -40,12 +48,14 @@ namespace Game
     m_active = active;
   }
 
+
+
   // Observer
   void PlayingState::notify(sf::Event& event)
   {
     if (m_active)
       {
-        log::write(log::hint, this->toString() + " caught an event.");
+        log::putln(log::hint, this->toString() + " caught an event.");
 
         if (event.type == sf::Event::KeyPressed)
           {
@@ -53,8 +63,10 @@ namespace Game
       }
   }
 
+
+
   std::string PlayingState::toString()
   {
-    return ("Game::PlayingState");
+    return "Game::PlayingState";
   }
 }

@@ -9,11 +9,13 @@ namespace Core
 
     for (it = m_prototypes.begin(); it != m_prototypes.end(); it++)
       {
-        delete(it->second);
+        delete it->second;
       }
 
     m_prototypes.clear();
   }
+
+
 
   Entities::Entity*   EntityFactory::give(const std::string& name)
   {
@@ -34,10 +36,11 @@ namespace Core
       }
 
     if (found)
-      return (tmp);
+      return tmp;
     else
       {
-        log::write(log::fatal, "Tried to create an unknown object!");
+        log::putln(log::fatal, "Tried to create an unknown object!");
+
         throw new std::string("Tried to create an unknown object!");
       }
   }

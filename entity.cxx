@@ -5,16 +5,20 @@ namespace Entities
   Entity::Entity()
   {
     m_initialized = false;
-    m_destroyed = false;
+    m_destroyed   = false;
   }
+
+
 
   bool Entity::isInitialized()
   {
-    return (m_initialized);
+    return m_initialized;
   }
+
+
 
   bool Entity::isDestroyed()
   {
-    return (m_destroyed);
+    return m_destroyed;
   }
 }

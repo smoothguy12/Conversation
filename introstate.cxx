@@ -15,7 +15,8 @@ namespace Game
     m_context->enlist(this);
 
     Core::Window::getInstance()->attach(this, sf::Event::KeyPressed);
-    log::write(log::message, "Initialized Game::IntroState");
+
+    log::putln(log::message, "Initialized Game::IntroState");
   }
 
 
@@ -23,7 +24,8 @@ namespace Game
   IntroState::~IntroState()
   {
     Core::Window::getInstance()->detach(this);
-    log::write(log::message, "Destroyed Game::IntroState");
+
+    log::putln(log::message, "Destroyed Game::IntroState");
   }
 
 
@@ -31,7 +33,7 @@ namespace Game
   // State
   void IntroState::execute()
   {
-    log::write(log::flood, "Hello Intro");
+    log::putln(log::flood, "Hello Intro");
   }
 
 
@@ -58,11 +60,11 @@ namespace Game
   {
     if (m_active)
       {
-        log::write(log::hint, this->toString() + " caught an event.");
+        log::putln(log::hint, this->toString() + " caught an event.");
 
         if (event.type == sf::Event::KeyPressed)
           {
-            if (event.key.code == sf::Keyboard::Return)
+            if (event.key.code == sf::Keyboard::Escape)
               {
                 m_context->setState(new PlayingState(m_context));
               }
@@ -74,6 +76,6 @@ namespace Game
 
   std::string IntroState::toString()
   {
-    return ("Game::IntroState");
+    return "Game::IntroState";
   }
 }

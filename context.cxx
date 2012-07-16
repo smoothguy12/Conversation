@@ -13,7 +13,7 @@ namespace Game
   Context::Context()
   {
     m_running = true;
-    m_state = new PreloadingState(this);
+    m_state   = new PreloadingState(this);
 
     // We should wait a little before entering IntroState (may'be LoadingState ?)
     m_state->activate(true);
@@ -27,7 +27,7 @@ namespace Game
 
     m_characters.push_back(character);
 
-    log::write(log::message, "Initialized Game::Context");
+    log::putln(log::message, "Initialized Game::Context");
   }
 
 
@@ -39,13 +39,13 @@ namespace Game
 
     for (its = m_states.begin(); its != m_states.end(); )
       {
-        delete(*its);
+        delete *its;
         its = m_states.erase(its);
       }
 
     for (itc = m_characters.begin(); itc != m_characters.end(); )
       {
-        delete(*itc);
+        delete *itc;
         itc = m_characters.erase(itc);
       }
 
@@ -53,7 +53,8 @@ namespace Game
     Core::Settings::destroyInstance();
     Core::EntityFactory::destroyInstance();
     Core::Window::destroyInstance();
-    log::write(log::message, "Destroyed Game::Context");
+
+    log::putln(log::message, "Destroyed Game::Context");
   }
 
 
@@ -63,6 +64,7 @@ namespace Game
     Core::Window* window;
 
     window = Core::Window::getInstance();
+
     while (m_running and window->isShown())
       {
         this->update();
@@ -108,7 +110,7 @@ namespace Game
       }
 
     if (found)
-      log::write(log::warning, "Called Context::enlist() more than one time.");
+      log::putln(log::warning, "Called Context::enlist() more than one time.");
     else
       m_states.push_back(state);
   }
@@ -117,7 +119,8 @@ namespace Game
 
   void Context::setState(State* state)
   {
-    log::write(log::trivial, "Switching from " + m_state->toString() + " to " + state->toString());
+    log::putln(log::trivial, "Switching from " + m_state->toString() + " to " + state->toString());
+
     m_state->activate(false);
     m_state = state;
     m_state->activate(true);

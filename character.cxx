@@ -5,28 +5,38 @@ namespace Entities
 {
   Character::Character()
   {
-    log::write(log::message, "One Game::Character new'd.");
+    log::putln(log::message, "One Game::Character new'd.");
   }
+
+
 
   Character::~Character()
   {
-    log::write(log::message, "One Game::Character deleted.");
+    log::putln(log::message, "One Game::Character deleted.");
   }
+
+
 
   Entity* Character::clone()
   {
-    return (new Character);
+    return new Character;
   }
+
+
 
   void Character::initialize()
   {
-    log::write(log::message, "One Game::Character initialized.");
     m_initialized = true;
+
+    log::putln(log::message, "One Game::Character initialized.");
   }
+
+
 
   void Character::destroy()
   {
-    log::write(log::message, "One Game::Character destroyed.");
     m_destroyed = true;
+
+    log::putln(log::message, "One Game::Character destroyed.");
   }
 }
