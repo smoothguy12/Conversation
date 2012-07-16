@@ -13,6 +13,7 @@ namespace Core
     m_window.create(sf::VideoMode(s->get<int>("window.width"),
                                   s->get<int>("window.height")),
                     s->get<std::string>("window.title"));
+
     m_window.setFramerateLimit(s->get<int>("window.fps_limit"));
     m_window.setKeyRepeatEnabled(s->get<bool>("input.key_repeat"));
 
@@ -78,20 +79,22 @@ namespace Core
 
     found = false;
 
-    for (itm = m_observers.begin(); itm != m_observers.end(); itm++)
+    itm = m_observers.find(eventType);
+
+    if (itm != m_observers.end())
       {
         for (itl = itm->second.begin(); itl != itm->second.end(); itl++)
           {
-            if ( (*itl) == observer)
+            if (*itl == observer)
               {
                 found = true;
+
+                log::putln(log::warning, "Called Window::attach() more than one time.");
               }
           }
       }
 
-    if (found)
-      log::putln(log::warning, "Called Window::addObserver() more than one time.");
-    else
+    if (!found)
       m_observers[eventType].push_back(observer);
   }
 
@@ -106,7 +109,7 @@ namespace Core
       {
         for (itl = itm->second.begin(); itl != itm->second.end(); )
           {
-            if ( (*itl) == observer)
+            if ( *itl == observer)
               {
                 itl = itm->second.erase(itl);
               }
@@ -129,7 +132,7 @@ namespace Core
       {
         for (itl = itm->second.begin(); itl != itm->second.end(); )
           {
-            if ( (*itl) == observer)
+            if ( *itl == observer)
               {
                 if ( itm->first == eventType)
                   {

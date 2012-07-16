@@ -23,7 +23,8 @@ SOURCES += \
     transformable.cxx \
     mixer.cxx \
     vectorreader.cxx \
-    preloadingstate.cxx
+    preloadingstate.cxx \
+    mainmenustate.cxx
 
 HEADERS += \
     conversation.hxx \
@@ -45,7 +46,8 @@ HEADERS += \
     transformable.hxx \
     mixer.hxx \
     vectorreader.hxx \
-    preloadingstate.hxx
+    preloadingstate.hxx \
+    mainmenustate.hxx
 
 LIBS += -L/usr/include/SFML -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 LIBS += -L/usr/include/jsoncpp -ljsoncpp
