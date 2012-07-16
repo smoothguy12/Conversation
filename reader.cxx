@@ -31,7 +31,7 @@ namespace Core
   {
     if (m_content.empty())
       {
-        log::write(log::warning, m_filename + " is empty");
+        log::write(log::warning, "!!! " + m_filename + " is empty");
       }
     return (m_content);
   }
