@@ -10,11 +10,13 @@ namespace Core
   public:
     Reader(std::string filename);
     ~Reader();
-    Json::Value&  get();
+    const Json::Value&  get();
+    bool isValid();
 
-  private:
+  protected:
     std::string   m_filename;
     Json::Value   m_content;
+    bool          m_valid;
   };
 }
 

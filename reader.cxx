@@ -12,11 +12,17 @@ namespace Core
     bool          parsed;
 
     m_filename  = filename;
+    m_valid = false;
     parsed      = reader.parse(fin, m_content);
 
     if (!parsed)
       {
         log::putln(log::error, "Failed to parse " + filename + " " + reader.getFormattedErrorMessages());
+      }
+
+    if (!m_content.empty())
+      {
+        m_valid = true;
       }
 
     log::putln(log::message, "Initialized Core::Reader");
@@ -31,12 +37,13 @@ namespace Core
 
 
 
-  Json::Value& Reader::get()
+  const Json::Value& Reader::get()
   {
-    if (m_content.empty())
-      {
-        log::putln(log::warning, "!!! " + m_filename + " is empty");
-      }
     return m_content;
+  }
+
+  bool Reader::isValid()
+  {
+    return m_valid;
   }
 }

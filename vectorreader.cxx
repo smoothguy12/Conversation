@@ -5,17 +5,13 @@ namespace Core
 {
   VectorReader::VectorReader(std::string filename) : Reader(filename)
   {
-    Reader        reader(filename);
-    Json::Value   content;
     unsigned int  index;
 
-    content = reader.get();
-
-    if (content.isArray() and !content.empty())
+    if (m_content.isArray() and !m_content.empty())
       {
-        for (index = 0; index < content.size(); index++)
+        for (index = 0; index < m_content.size(); index++)
           {
-            m_vector.push_back(content[index].asString());
+            m_vector.push_back(m_content[index].asString());
           }
       }
     else
@@ -23,7 +19,7 @@ namespace Core
         log::putln(log::error, "Invalid structure for file " + filename);
       }
 
-    log::putln(log::message, "Initialized Core::Reader");
+    log::putln(log::message, "Initialized Core::VectorReader");
   }
 
 
@@ -32,7 +28,7 @@ namespace Core
   {
     m_vector.clear();
 
-    log::putln(log::message, "Destroyed Core::ListReader");
+    log::putln(log::message, "Destroyed Core::VectorReader");
   }
 
 
