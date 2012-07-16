@@ -24,7 +24,9 @@ SOURCES += \
     mixer.cxx \
     vectorreader.cxx \
     preloadingstate.cxx \
-    mainmenustate.cxx
+    mainmenustate.cxx \
+    fontmanager.cxx \
+    mapreader.cxx
 
 HEADERS += \
     conversation.hxx \
@@ -47,7 +49,9 @@ HEADERS += \
     mixer.hxx \
     vectorreader.hxx \
     preloadingstate.hxx \
-    mainmenustate.hxx
+    mainmenustate.hxx \
+    fontmanager.hxx \
+    mapreader.hxx
 
 LIBS += -L/usr/include/SFML -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 LIBS += -L/usr/include/jsoncpp -ljsoncpp

@@ -4,6 +4,7 @@
 #include "settings.hxx"
 #include "preloadingstate.hxx"
 #include "mixer.hxx"
+#include "fontmanager.hxx"
 
 // TEMP
 #include "entityfactory.hxx"
@@ -26,6 +27,9 @@ namespace Game
     character->initialize();
 
     m_characters.push_back(character);
+
+    // FIXME
+    Core::FontManager* fm = Core::FontManager::getInstance();
 
     log::putln(log::message, "Initialized Game::Context");
   }

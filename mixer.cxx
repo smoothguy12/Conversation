@@ -15,6 +15,12 @@ namespace Core
     m_current = 0;
     m_valid   = false;
 
+    if (!vector_reader.isValid())
+      {
+        log::putln(log::fatal, "Invalid musics file.");
+        return ;
+      }
+
     for (index = 0; index < vector.size(); index++)
       {
         sf::Music* music = new sf::Music();
