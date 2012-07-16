@@ -2,19 +2,18 @@
 #include "window.hxx"
 #include "log.hxx"
 #include "settings.hxx"
-#include "introstate.hxx"
-#include "playingstate.hxx"
+#include "preloadingstate.hxx"
+#include "mixer.hxx"
 
 // TEMP
 #include "entityfactory.hxx"
-#include "mixer.hxx"
 
 namespace Game
 {
   Context::Context()
   {
     m_running = true;
-    m_state = new IntroState(this);
+    m_state = new PreloadingState(this);
 
     // We should wait a little before entering IntroState (may'be LoadingState ?)
     m_state->activate(true);
@@ -28,12 +27,10 @@ namespace Game
 
     m_characters.push_back(character);
 
-    // Temporary Mixer Initialization
-    Core::Mixer* mixer = Core::Mixer::getInstance();
-    mixer->play();
-
     log::write(log::message, "Initialized Game::Context");
   }
+
+
 
   Context::~Context()
   {
@@ -59,6 +56,8 @@ namespace Game
     log::write(log::message, "Destroyed Game::Context");
   }
 
+
+
   void Context::start()
   {
     Core::Window* window;
@@ -69,6 +68,8 @@ namespace Game
         this->update();
       }
   }
+
+
 
   void Context::update()
   {
@@ -81,10 +82,14 @@ namespace Game
     m_state->execute();
   }
 
+
+
   void Context::stop()
   {
     m_running = false;
   }
+
+
 
   // State
   void Context::enlist(State* state)
@@ -107,6 +112,8 @@ namespace Game
     else
       m_states.push_back(state);
   }
+
+
 
   void Context::setState(State* state)
   {

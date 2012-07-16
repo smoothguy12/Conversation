@@ -4,6 +4,7 @@
 #include "log.hxx"
 #include "context.hxx"
 #include "playingstate.hxx"
+#include "mixer.hxx"
 
 namespace Game
 {
@@ -14,9 +15,10 @@ namespace Game
     m_context->enlist(this);
 
     Core::Window::getInstance()->attach(this, sf::Event::KeyPressed);
-
     log::write(log::message, "Initialized Game::IntroState");
   }
+
+
 
   IntroState::~IntroState()
   {
@@ -24,23 +26,32 @@ namespace Game
     log::write(log::message, "Destroyed Game::IntroState");
   }
 
+
+
   // State
   void IntroState::execute()
   {
     log::write(log::flood, "Hello Intro");
   }
 
+
+
   void IntroState::activate(bool active)
   {
     if (active)
       {
+        Core::Mixer::getInstance()->pick(0);
+        Core::Mixer::getInstance()->play();
       }
     else
       {
+        Core::Mixer::getInstance()->pause();
       }
 
     m_active = active;
   }
+
+
 
   // Observer
   void IntroState::notify(sf::Event& event)
@@ -58,6 +69,8 @@ namespace Game
           }
       }
   }
+
+
 
   std::string IntroState::toString()
   {
