@@ -3,7 +3,7 @@
 #include "window.hxx"
 #include "log.hxx"
 #include "context.hxx"
-#include "playingstate.hxx"
+#include "mainmenustate.hxx"
 #include "mixer.hxx"
 
 namespace Game
@@ -66,7 +66,7 @@ namespace Game
           {
             if (event.key.code == sf::Keyboard::Escape)
               {
-                m_context->setState(new PlayingState(m_context));
+                m_context->setState(new MainMenuState(m_context));
               }
           }
       }
