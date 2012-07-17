@@ -20,7 +20,7 @@ namespace Core
   Entities::Entity*   EntityFactory::give(const std::string& name)
   {
     std::map<std::string, Entities::Entity*>::iterator it;
-    bool found;
+    bool              found;
     Entities::Entity* tmp;
 
     found = false;

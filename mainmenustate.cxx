@@ -12,7 +12,7 @@ namespace Game
     Core::Window*   w;
     Core::Settings* s;
 
-    m_active = false;
+    m_active  = false;
     m_context = context;
     m_context->enlist(this);
     w = Core::Window::getInstance();
@@ -29,6 +29,7 @@ namespace Game
     m_title = new GUI::Text(s->get<std::string>("window.title"),
                             GUI::Text::Title,
                             sf::Vector2f(0, 0) );
+
     log::putln(log::message, "Initialized Game::MainMenuState");
   }
 

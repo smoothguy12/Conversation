@@ -8,7 +8,9 @@ namespace Core
 {
   Window::Window()
   {
-    Core::Settings* s = Core::Settings::getInstance();
+    Core::Settings* s;
+
+    s = Core::Settings::getInstance();
 
     m_window.create(sf::VideoMode(s->get<int>("window.width"),
                                   s->get<int>("window.height")),

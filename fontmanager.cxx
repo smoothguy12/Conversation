@@ -9,9 +9,9 @@ namespace Core
 {
   FontManager::FontManager()
   {
-    std::map<std::string, std::string> map;
-    std::map<std::string, std::string>::iterator it;
-    MapReader map_reader("data/System/fonts.json");
+    std::map<std::string, std::string>            map;
+    std::map<std::string, std::string>::iterator  it;
+    MapReader                                     map_reader("data/System/fonts.json");
 
     map = map_reader.get();
 

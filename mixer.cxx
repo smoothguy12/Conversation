@@ -7,9 +7,9 @@ namespace Core
 {
   Mixer::Mixer()
   {
-    std::vector<std::string> vector;
-    VectorReader vector_reader("data/System/musics.json");
-    unsigned int index;
+    std::vector<std::string>  vector;
+    VectorReader              vector_reader("data/System/musics.json");
+    unsigned int              index;
 
     vector    = vector_reader.get();
     m_current = 0;
@@ -27,7 +27,7 @@ namespace Core
 
         log::put(log::trivial, "Loading (Music) : " + vector[index] + "... ");
 
-        if (!music->openFromFile("data/Musics/" + vector[index]))
+        if (!music->openFromFile("data/Audio/Musics/" + vector[index]))
           {
             log::putln(log::trivial, "Fail!");
           }

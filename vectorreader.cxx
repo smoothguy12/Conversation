@@ -5,7 +5,7 @@ namespace Core
 {
   VectorReader::VectorReader(std::string filename) : Reader(filename)
   {
-    unsigned int  index;
+    unsigned int index;
 
     if (m_content.isArray() and !m_content.empty())
       {

@@ -12,7 +12,7 @@ namespace Core
     bool          parsed;
 
     m_filename  = filename;
-    m_valid = false;
+    m_valid     = false;
     parsed      = reader.parse(fin, m_content);
 
     if (!parsed)

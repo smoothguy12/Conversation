@@ -47,11 +47,11 @@ namespace Core
       {
         log::putln(log::error, "Core::Settings: Couldn't find key (" + key + ")");
 
-        return "STR NOT FOUND";
+        return "STR_NOT_FOUND";
       }
     else
       {
-        return (m_content.get(key, "STR NOT FOUND").asString());
+        return (m_content.get(key, "STR_NOT_FOUND").asString());
       }
   }
 

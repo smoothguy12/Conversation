@@ -8,12 +8,12 @@ namespace Core
 {
   MapReader::MapReader(std::string filename) : Reader(filename)
   {
-    std::vector<std::string> keys;
-    std::vector<std::string>::iterator itk;
+    std::vector<std::string>            keys;
+    std::vector<std::string>::iterator  itk;
 
     if (m_content.isObject() and !m_content.empty())
       {
-        keys = m_content.getMemberNames();
+        keys    = m_content.getMemberNames();
         m_valid = true;
 
         for (itk = keys.begin(); itk != keys.end(); itk++)
