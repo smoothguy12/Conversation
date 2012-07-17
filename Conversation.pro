@@ -26,7 +26,8 @@ SOURCES += \
     preloadingstate.cxx \
     mainmenustate.cxx \
     fontmanager.cxx \
-    mapreader.cxx
+    mapreader.cxx \
+    text.cxx
 
 HEADERS += \
     conversation.hxx \
@@ -51,7 +52,8 @@ HEADERS += \
     preloadingstate.hxx \
     mainmenustate.hxx \
     fontmanager.hxx \
-    mapreader.hxx
+    mapreader.hxx \
+    text.hxx
 
 LIBS += -L/usr/include/SFML -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 LIBS += -L/usr/include/jsoncpp -ljsoncpp

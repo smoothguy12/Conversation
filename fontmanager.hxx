@@ -5,13 +5,26 @@
 #include <map>
 #include <SFML/Graphics/Font.hpp>
 
+namespace GUI
+{
+  namespace Font
+  {
+    enum Style {
+      Standard,
+      Title
+    };
+  }
+}
+
+
+
 namespace Core
 {
   class FontManager : public Singleton<FontManager>
   {
   public:
     friend class Singleton<FontManager>;
-    sf::Font& get(std::string& type);
+    sf::Font& get(GUI::Font::Style type);
 
   private:
     FontManager();

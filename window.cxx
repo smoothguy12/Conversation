@@ -29,16 +29,17 @@ namespace Core
 
 
 
-  bool Window::isShown()
-  {
-    return m_window.isOpen();
-  }
-
-
-
   void Window::draw()
   {
+    std::list<sf::Drawable*>::iterator it;
+
     m_window.clear();
+
+    for (it = m_rendering.begin(); it != m_rendering.end(); it++)
+      {
+        m_window.draw(**it);
+      }
+
     m_window.display();
   }
 
@@ -67,6 +68,20 @@ namespace Core
             m_window.close();
           }
       }
+  }
+
+
+
+  bool Window::isShown()
+  {
+    return m_window.isOpen();
+  }
+
+
+
+  sf::Vector2u Window::getSize()
+  {
+    return m_window.getSize();
   }
 
 
@@ -146,6 +161,40 @@ namespace Core
                 itl++;
               }
           }
+      }
+  }
+
+
+
+  void Window::pushDrawable(sf::Drawable* drawable)
+  {
+    std::list<sf::Drawable*>::iterator it;
+    bool found;
+
+    found = false;
+
+    for (it = m_rendering.begin(); it != m_rendering.end(); it++)
+      {
+        if (*it == drawable)
+          found = true;
+      }
+
+    if (!found)
+      m_rendering.push_back(drawable);
+    else
+      log::putln(log::error, "Tried to pushDrawable twice.");
+  }
+
+
+
+  void Window::pullDrawable(sf::Drawable* drawable)
+  {
+    std::list<sf::Drawable*>::iterator it;
+
+    for (it = m_rendering.begin(); it != m_rendering.end(); it++)
+      {
+        if (*it == drawable)
+          it = m_rendering.erase(it);
       }
   }
 }

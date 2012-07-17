@@ -28,9 +28,6 @@ namespace Game
 
     m_characters.push_back(character);
 
-    // FIXME
-    Core::FontManager* fm = Core::FontManager::getInstance();
-
     log::putln(log::message, "Initialized Game::Context");
   }
 
@@ -53,6 +50,7 @@ namespace Game
         itc = m_characters.erase(itc);
       }
 
+    Core::FontManager::destroyInstance();
     Core::Mixer::destroyInstance();
     Core::Settings::destroyInstance();
     Core::EntityFactory::destroyInstance();

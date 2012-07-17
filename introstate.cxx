@@ -6,6 +6,7 @@
 #include "mainmenustate.hxx"
 #include "mixer.hxx"
 
+
 namespace Game
 {
   IntroState::IntroState(Context* context)

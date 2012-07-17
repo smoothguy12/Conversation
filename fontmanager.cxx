@@ -47,15 +47,22 @@ namespace Core
     log::putln(log::message, "Destroyed Core::FontManager.");
   }
 
-  sf::Font& FontManager::get(std::string& type)
+  sf::Font& FontManager::get(GUI::Font::Style type)
   {
     std::map<std::string, sf::Font>::iterator it;
+    // FIXME
+    std::string request;
 
-    it = m_fonts.find(type);
+    if (type == GUI::Font::Standard)
+      request = "standard";
+    else if (type == GUI::Font::Title)
+      request = "title";
+
+    it = m_fonts.find(request);
 
     if (it != m_fonts.end())
       {
-        return m_fonts[type];
+        return m_fonts[request];
       }
     else
       {
