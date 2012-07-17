@@ -35,7 +35,7 @@ namespace GUI
     m_text->setFont( fm->get(GUI::Font::Standard) );
     m_text->setColor(sf::Color::White);
     m_text->setStyle(sf::Text::Regular);
-    m_text->setCharacterSize(12);
+    m_text->setCharacterSize(24);
   }
 
 
@@ -47,7 +47,7 @@ namespace GUI
     fm = Core::FontManager::getInstance();
     this->buildStandard();
     m_text->setFont( fm->get(GUI::Font::Title) );
-    m_text->setCharacterSize(20);
+    m_text->setCharacterSize(30);
     m_text->setStyle(sf::Text::Bold);
   }
 
@@ -56,7 +56,7 @@ namespace GUI
   void Text::buildTitle()
   {
     this->buildSection();
-    m_text->setCharacterSize(48);
+    m_text->setCharacterSize(60);
   }
 
 
@@ -64,7 +64,7 @@ namespace GUI
   void Text::buildLegend()
   {
     this->buildStandard();
-    m_text->setCharacterSize(10);
+    m_text->setCharacterSize(20);
     m_text->setStyle(sf::Text::Italic);
   }
 

@@ -2,9 +2,10 @@
 #include <SFML/Window/Event.hpp>
 #include "log.hxx"
 #include "context.hxx"
-#include "window.hxx"
-#include "mixer.hxx"
 #include "introstate.hxx"
+#include "mixer.hxx"
+#include "fontmanager.hxx"
+
 
 namespace Game
 {
@@ -39,6 +40,7 @@ namespace Game
     if (active)
       {
         Core::Mixer::getInstance();
+        Core::FontManager::getInstance();
         m_context->setState(new IntroState(m_context));
 
       }
