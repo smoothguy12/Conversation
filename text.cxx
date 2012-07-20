@@ -2,16 +2,19 @@
 #include "fontmanager.hxx"
 #include <SFML/Graphics/Font.hpp>
 
-namespace GUI
+namespace UI
 {
   Text::Text(std::string text, Text::Type type, sf::Vector2f pos)
   {
     m_text = new sf::Text();
 
-    if (type == Text::Section)      this->buildSection();
-    else if (type == Text::Title)   this->buildTitle();
-    else if (type == Text::Legend)  this->buildLegend();
-    else                            this->buildStandard();
+    switch (type)
+      {
+      case Text::Section: this->buildSection();   break;
+      case Text::Title:   this->buildTitle();     break;
+      case Text::Legend:  this->buildLegend();    break;
+      default:            this->buildStandard();  break;
+      }
 
     m_text->setString(text);
     m_text->move(pos);
@@ -32,7 +35,7 @@ namespace GUI
 
     fm = Core::FontManager::getInstance();
 
-    m_text->setFont( fm->get(GUI::Font::Standard) );
+    m_text->setFont( fm->get(UI::Font::Standard) );
     m_text->setColor(sf::Color::White);
     m_text->setStyle(sf::Text::Regular);
     m_text->setCharacterSize(24);
@@ -46,7 +49,7 @@ namespace GUI
 
     fm = Core::FontManager::getInstance();
     this->buildStandard();
-    m_text->setFont( fm->get(GUI::Font::Title) );
+    m_text->setFont( fm->get(UI::Font::Title) );
     m_text->setCharacterSize(30);
     m_text->setStyle(sf::Text::Bold);
   }
@@ -80,5 +83,26 @@ namespace GUI
   sf::Drawable* Text::getDrawable()
   {
     return static_cast<sf::Drawable*>(m_text);
+  }
+
+
+
+  sf::Vector2u Text::getSize()
+  {
+    sf::FloatRect rect;
+    sf::Vector2u  size;
+
+    rect    = m_text->getGlobalBounds();
+    size.x  = (rect.left + rect.width);
+    size.y  = (rect.top + rect.height);
+
+    return size;
+  }
+
+
+
+  void Text::move(float x, float y)
+  {
+    m_text->move(sf::Vector2f(x, y));
   }
 }

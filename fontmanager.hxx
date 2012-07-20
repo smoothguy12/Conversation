@@ -5,7 +5,7 @@
 #include <map>
 #include <SFML/Graphics/Font.hpp>
 
-namespace GUI
+namespace UI
 {
   namespace Font
   {
@@ -24,7 +24,7 @@ namespace Core
   {
   public:
     friend class Singleton<FontManager>;
-    sf::Font& get(GUI::Font::Style type);
+    sf::Font& get(UI::Font::Style type);
 
   private:
     FontManager();

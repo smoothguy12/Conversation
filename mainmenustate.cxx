@@ -11,6 +11,8 @@ namespace Game
   {
     Core::Window*   w;
     Core::Settings* s;
+    float x;
+    float y;
 
     m_active  = false;
     m_context = context;
@@ -26,9 +28,21 @@ namespace Game
     w->attach(this, sf::Event::MouseButtonReleased);
     w->attach(this, sf::Event::MouseWheelMoved);
 
-    m_title = new GUI::Text(s->get<std::string>("window.title"),
-                            GUI::Text::Title,
-                            sf::Vector2f(0, 0) );
+    /*
+     * I've placed m_title on default coordinates then moved it because my
+     * current design does not allow me to call getSize() on Text
+     * initialization (we can't get the size of something which has not
+     * been drawn yet).
+     * Percents values may be more suitable for resolution independent
+     * positioning.
+     */
+    m_title = new UI::Text(s->get<std::string>("window.title"),
+                           UI::Text::Title,
+                           sf::Vector2f(0, 0) );
+
+    x = (w->getSize().x /2) - (m_title->getSize().x /2);
+    y = (w->getSize().y /8) - (m_title->getSize().y /2);
+    m_title->move(x, y);
 
     log::putln(log::message, "Initialized Game::MainMenuState");
   }
@@ -41,7 +55,7 @@ namespace Game
 
     w = Core::Window::getInstance();
     w->detach(this);
-    w->pullDrawable(m_title->getDrawable());
+    w->pull(m_title->getDrawable());
 
     delete(m_title);
 
@@ -66,11 +80,11 @@ namespace Game
 
     if (active)
       {
-        w->pushDrawable(m_title->getDrawable());
+        w->push(m_title->getDrawable());
       }
     else
       {
-        w->pullDrawable(m_title->getDrawable());
+        w->pull(m_title->getDrawable());
       }
 
     m_active = active;

@@ -2,7 +2,7 @@
 #define TEXT_HXX
 #include <SFML/Graphics/Text.hpp>
 
-namespace GUI
+namespace UI
 {
   class Text
   {
@@ -18,6 +18,8 @@ namespace GUI
     ~Text();
     sf::Text*     get();
     sf::Drawable* getDrawable();
+    sf::Vector2u  getSize();
+    void          move(float x, float y);
 
   private:
     void          buildStandard();

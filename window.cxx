@@ -88,6 +88,7 @@ namespace Core
 
 
 
+  // Observable
   void Window::attach(Observer* observer, sf::Event::EventType eventType)
   {
     std::map<sf::Event::EventType, std::list<Observer*> >::iterator itm;
@@ -168,7 +169,8 @@ namespace Core
 
 
 
-  void Window::pushDrawable(sf::Drawable* drawable)
+  // Rendering
+  void Window::push(sf::Drawable* drawable)
   {
     std::list<sf::Drawable*>::iterator it;
     bool found;
@@ -189,7 +191,7 @@ namespace Core
 
 
 
-  void Window::pullDrawable(sf::Drawable* drawable)
+  void Window::pull(sf::Drawable* drawable)
   {
     std::list<sf::Drawable*>::iterator it;
 
@@ -198,5 +200,13 @@ namespace Core
         if (*it == drawable)
           it = m_rendering.erase(it);
       }
+  }
+
+
+
+  // Presenter
+  void Window::dispatch(sf::Event& event)
+  {
+
   }
 }

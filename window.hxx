@@ -5,12 +5,13 @@
 #include <SFML/Window/Event.hpp>
 #include "observable.hxx"
 #include "observer.hxx"
+#include "presenter.hxx"
 #include <list>
 #include <map>
 
 namespace Core
 {
-  class Window : public Singleton<Window>, public Observable
+  class Window : public Singleton<Window>, public Observable, public UI::Presenter
   {
   public:
     friend class Singleton<Window>;
@@ -25,8 +26,11 @@ namespace Core
     void detach(Observer* observer, sf::Event::EventType eventType);
 
     // Rendering
-    void pushDrawable(sf::Drawable* drawable);
-    void pullDrawable(sf::Drawable* drawable);
+    void push(sf::Drawable* drawable);
+    void pull(sf::Drawable* drawable);
+
+    // Presenter
+    void dispatch(sf::Event& event);
 
   private:
     Window();

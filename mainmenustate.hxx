@@ -20,7 +20,7 @@ namespace Game
     void          notify(sf::Event &event);
     std::string   toString();
 
-    GUI::Text*    m_title;
+    UI::Text*    m_title;
   };
 }
 

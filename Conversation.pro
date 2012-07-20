@@ -27,7 +27,9 @@ SOURCES += \
     mainmenustate.cxx \
     fontmanager.cxx \
     mapreader.cxx \
-    text.cxx
+    text.cxx \
+    widget.cxx \
+    presenter.cxx
 
 HEADERS += \
     conversation.hxx \
@@ -53,7 +55,9 @@ HEADERS += \
     mainmenustate.hxx \
     fontmanager.hxx \
     mapreader.hxx \
-    text.hxx
+    text.hxx \
+    widget.hxx \
+    presenter.hxx
 
 LIBS += -L/usr/include/SFML -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 LIBS += -L/usr/include/jsoncpp -ljsoncpp

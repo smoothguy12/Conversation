@@ -25,3 +25,4 @@ Unsure :
 Observable entity should notify its Observers on each new event detection and have a public
 method for Observers to get this particular event. Nevertheless, I'm not sure it would be
 either worth the time or adequate.
+- Should I use sf::Strings everywhere instead of std::string for proper Unicode support ?

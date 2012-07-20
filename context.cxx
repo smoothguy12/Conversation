@@ -15,10 +15,9 @@ namespace Game
   {
     m_running = true;
     m_state   = new PreloadingState(this);
-
-    // We should wait a little before entering IntroState (may'be LoadingState ?)
     m_state->activate(true);
 
+    // FIXME: Move this to a Spawner class
     // Factory initialization
     Core::EntityFactory::getInstance()->learn<Entities::Character>("character");
 
