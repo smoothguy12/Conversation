@@ -6,6 +6,8 @@
 #include "settings.hxx"
 #include "introstate.hxx"
 #include "mixer.hxx"
+#include "label.hxx"
+#include <iostream>
 
 namespace Game
 {
@@ -30,17 +32,8 @@ namespace Game
     w->attach(this, sf::Event::MouseButtonReleased);
     w->attach(this, sf::Event::MouseWheelMoved);
 
-    /*
-     * I've placed m_title on default coordinates then moved it because my
-     * current design does not allow me to call getSize() on Text
-     * initialization (we can't get the size of something which has not
-     * been drawn yet).
-     * Percents values may be more suitable for resolution independent
-     * positioning.
-     */
-    m_title = new UI::Text(s->get<std::string>("window.title"),
-                           UI::Text::Title,
-                           sf::Vector2f(0, 0) );
+    m_title = new UI::Label(s->get<std::string>("window.title"),
+                           UI::Text::Title);
 
     x = (w->getSize().x /2) - (m_title->getSize().x /2);
     y = (w->getSize().y /8) - (m_title->getSize().y /2);
@@ -85,12 +78,12 @@ namespace Game
         Core::Mixer::getInstance()->pick(0);
         Core::Mixer::getInstance()->play();
 
-        w->push(m_title->getDrawable());
+        w->push(m_title);
       }
     else
       {
         Core::Mixer::getInstance()->pause();
-        w->pull(m_title->getDrawable());
+        w->pull(m_title);
       }
 
     m_active = active;

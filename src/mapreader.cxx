@@ -29,6 +29,8 @@ namespace Core
         log::putln(log::error, "Invalid structure for file " + filename);
       }
 
+    keys.clear();
+
     log::putln(log::message, "Initialized Core::MapReader");
   }
 

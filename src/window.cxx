@@ -3,6 +3,7 @@
 #include <SFML/Window/Event.hpp>
 #include "settings.hxx"
 #include "log.hxx"
+#include "widget.hxx"
 
 namespace Core
 {
@@ -69,6 +70,8 @@ namespace Core
           {
             m_window.close();
           }
+
+        this->dispatch(m_event);
       }
   }
 
@@ -204,15 +207,25 @@ namespace Core
 
 
 
-  // Presenter
-  void Window::dispatch(sf::Event& event)
+  // UI::Container override
+  void Window::push(UI::Widget* widget)
   {
-    /*
-     * Dispatch all events to widgets. They'll then handle them depending
-     * on their m_focus value.
-     * Exception: MouseButtonPressed/Releader events are processed
-     * depending on widgets' m_zorder (highest z ordered widget actually
-     * handle it).
-     */
+    this->push(widget->getDrawable());
+    UI::Container::push(widget);
+  }
+
+
+
+  void Window::pull(UI::Widget* widget)
+  {
+    std::list<sf::Drawable*>::iterator it;
+
+    for (it = m_rendering.begin(); it != m_rendering.end(); it++)
+      {
+        if (*it == widget->getDrawable())
+          it = m_rendering.erase(it);
+      }
+
+    UI::Container::pull(widget);
   }
 }

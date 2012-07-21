@@ -2,7 +2,7 @@
 #define MAINMENUSTATE_HXX
 #include "state.hxx"
 #include "context.hxx"
-#include "text.hxx"
+#include "widget.hxx"
 
 namespace Game
 {
@@ -20,7 +20,8 @@ namespace Game
     void          notify(sf::Event &event);
     std::string   toString();
 
-    UI::Text*    m_title;
+//    UI::Text*    m_title;
+    UI::Widget*    m_title;
   };
 }
 

@@ -30,6 +30,8 @@ namespace Core
         if (!music->openFromFile("data/Audio/Musics/" + vector[index]))
           {
             log::putln(log::trivial, "Fail!");
+
+            delete music;
           }
         else
           {

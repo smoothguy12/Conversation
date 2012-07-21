@@ -29,7 +29,8 @@ SOURCES += \
     mapreader.cxx \
     text.cxx \
     widget.cxx \
-    presenter.cxx
+    container.cxx \
+    label.cxx
 
 HEADERS += \
     conversation.hxx \
@@ -57,12 +58,11 @@ HEADERS += \
     mapreader.hxx \
     text.hxx \
     widget.hxx \
-    presenter.hxx
+    container.hxx \
+    label.hxx
 
 LIBS += -L/usr/include/SFML -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 LIBS += -L/usr/include/jsoncpp -ljsoncpp
 
 OTHER_FILES += \
-    singleton.inc \
-    README.md \
-    TODO.txt
+    singleton.inc

@@ -1,4 +1,6 @@
 #include "widget.hxx"
+#include "container.hxx"
+#include <iostream>
 
 namespace UI
 {
@@ -53,16 +55,23 @@ namespace UI
 
 
 
-  const int& Widget::getZOrder()
+  void Widget::handle(sf::Event& event)
   {
-    return m_zorder;
+    std::cout << "Handling " << event.type << "\n";
   }
 
 
 
-  sf::Sprite* Widget::get()
+  void Widget::move(float x, float y)
   {
-    return m_sprite;
+    m_sprite->move(x, y);
+  }
+
+
+
+  void Widget::move(sf::Vector2f coords)
+  {
+    m_sprite->move(coords);
   }
 
 
@@ -84,5 +93,12 @@ namespace UI
     size.y  = (rect.top + rect.height);
 
     return size;
+  }
+
+
+
+  const int& Widget::getZOrder()
+  {
+    return m_zorder;
   }
 }
