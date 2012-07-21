@@ -2,7 +2,7 @@
 #include <SFML/Window/Event.hpp>
 #include "log.hxx"
 #include "context.hxx"
-#include "introstate.hxx"
+#include "mainmenustate.hxx"
 #include "mixer.hxx"
 #include "fontmanager.hxx"
 
@@ -41,7 +41,7 @@ namespace Game
       {
         Core::Mixer::getInstance();
         Core::FontManager::getInstance();
-        m_context->setState(new IntroState(m_context));
+        m_context->setState(new MainMenuState(m_context));
 
       }
     else

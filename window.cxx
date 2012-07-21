@@ -207,6 +207,12 @@ namespace Core
   // Presenter
   void Window::dispatch(sf::Event& event)
   {
-
+    /*
+     * Dispatch all events to widgets. They'll then handle them depending
+     * on their m_focus value.
+     * Exception: MouseButtonPressed/Releader events are processed
+     * depending on widgets' m_zorder (highest z ordered widget actually
+     * handle it).
+     */
   }
 }

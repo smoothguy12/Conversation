@@ -4,6 +4,8 @@
 #include "context.hxx"
 #include "window.hxx"
 #include "settings.hxx"
+#include "introstate.hxx"
+#include "mixer.hxx"
 
 namespace Game
 {
@@ -80,10 +82,14 @@ namespace Game
 
     if (active)
       {
+        Core::Mixer::getInstance()->pick(0);
+        Core::Mixer::getInstance()->play();
+
         w->push(m_title->getDrawable());
       }
     else
       {
+        Core::Mixer::getInstance()->pause();
         w->pull(m_title->getDrawable());
       }
 
@@ -101,6 +107,11 @@ namespace Game
 
         if (event.type == sf::Event::KeyPressed)
           {
+            if (event.key.code == sf::Keyboard::Num1
+                || event.key.code == sf::Keyboard::Numpad1)
+              {
+                m_context->setState(new IntroState(m_context));
+              }
           }
       }
   }

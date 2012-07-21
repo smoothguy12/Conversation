@@ -3,7 +3,7 @@
 #include "window.hxx"
 #include "log.hxx"
 #include "context.hxx"
-#include "mainmenustate.hxx"
+#include "playingstate.hxx"
 #include "mixer.hxx"
 
 
@@ -43,7 +43,7 @@ namespace Game
   {
     if (active)
       {
-        Core::Mixer::getInstance()->pick(0);
+        Core::Mixer::getInstance()->pick(1);
         Core::Mixer::getInstance()->play();
       }
     else
@@ -67,7 +67,7 @@ namespace Game
           {
             if (event.key.code == sf::Keyboard::Escape)
               {
-                m_context->setState(new MainMenuState(m_context));
+                m_context->setState(new PlayingState(m_context));
               }
           }
       }
