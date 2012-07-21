@@ -1,12 +1,14 @@
 #include "label.hxx"
 #include "fontmanager.hxx"
 #include <SFML/Graphics/Font.hpp>
+#include <iostream>
 
 namespace UI
 {
   Label::Label(std::string text, Text::Type type)
   {
-    m_text = new sf::Text();
+    m_rt    = new sf::RenderTexture();
+    m_text  = new sf::Text();
 
     switch (type)
       {
@@ -17,7 +19,14 @@ namespace UI
       }
 
     m_text->setString(text);
-    m_text->move(sf::Vector2f(0, 0));
+
+    m_rt->create(m_text->getGlobalBounds().width, m_text->getGlobalBounds().height);
+    m_rt->clear(sf::Color::Blue);
+    m_rt->draw(*m_text);
+    m_rt->display();
+
+    m_sprite->setTexture(m_rt->getTexture());
+    m_sprite->move(sf::Vector2f(0, 0));
   }
 
 
@@ -25,10 +34,11 @@ namespace UI
   Label::~Label()
   {
     delete m_text;
+    delete m_rt;
   }
 
 
-
+  /*
   void Label::move(float x, float y)
   {
     m_text->move(x, y);
@@ -61,7 +71,7 @@ namespace UI
 
     return size;
   }
-
+*/
 
 
 

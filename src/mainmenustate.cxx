@@ -7,7 +7,6 @@
 #include "introstate.hxx"
 #include "mixer.hxx"
 #include "label.hxx"
-#include <iostream>
 
 namespace Game
 {
@@ -50,7 +49,7 @@ namespace Game
 
     w = Core::Window::getInstance();
     w->detach(this);
-    w->pull(m_title->getDrawable());
+    w->pull(m_title);
 
     delete(m_title);
 

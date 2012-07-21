@@ -16,10 +16,10 @@ namespace UI
     void          gainFocus();
     void          loseFocus();
     void          handle(sf::Event& event);
-    virtual void  move(float x, float y);
-    virtual void  move(sf::Vector2f coords);
-    virtual sf::Drawable* getDrawable();
-    virtual sf::Vector2u  getSize();
+    void          move(float x, float y);
+    void          move(sf::Vector2f coords);
+    sf::Drawable* getDrawable();
+    sf::Vector2u  getSize();
     const int&    getZOrder();
 
   protected:

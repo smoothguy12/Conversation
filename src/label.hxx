@@ -4,7 +4,7 @@
 #include <string>
 #include "text.hxx"
 #include <SFML/Graphics/Text.hpp>
-#include <SFML/Graphics/Drawable.hpp>
+#include <SFML/Graphics/RenderTexture.hpp>
 
 namespace UI
 {
@@ -13,10 +13,12 @@ namespace UI
   public:
     Label(std::string text, Text::Type type = Text::Standard);
     ~Label();
+    /*
     void move(float x, float y);
     void move(sf::Vector2f coords);
     sf::Drawable* getDrawable();
     sf::Vector2u getSize();
+    */
 
   private:
     void buildStandard();
@@ -24,7 +26,8 @@ namespace UI
     void buildTitle();
     void buildLegend();
 
-    sf::Text* m_text;
+    sf::Text*           m_text;
+    sf::RenderTexture*  m_rt;
   };
 }
 
