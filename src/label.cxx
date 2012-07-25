@@ -1,40 +1,37 @@
 #include "label.hxx"
-#include "fontmanager.hxx"
 #include <SFML/Graphics/Font.hpp>
-#include <iostream>
+#include "log.hxx"
 
 namespace UI
 {
-  Label::Label(std::string text, Text::Type type)
+  Label::Label(std::string text, Text::Type type) : Text(text, type)
   {
-    m_rt    = new sf::RenderTexture();
-    m_text  = new sf::Text();
-
-    switch (type)
-      {
-      case Text::Section: this->buildSection();   break;
-      case Text::Title:   this->buildTitle();     break;
-      case Text::Legend:  this->buildLegend();    break;
-      default:            this->buildStandard();  break;
-      }
-
-    m_text->setString(text);
-
-    m_rt->create(m_text->getGlobalBounds().width, m_text->getGlobalBounds().height);
-    m_rt->clear(sf::Color::Blue);
-    m_rt->draw(*m_text);
-    m_rt->display();
-
-    m_sprite->setTexture(m_rt->getTexture());
-    m_sprite->move(sf::Vector2f(0, 0));
+    this->updateTexture();
+    //    std::cout << "Text height : " << m_text->getLocalBounds().height << std::endl;
+    //    std::cout << "Texture height : " << m_rt->getTexture().getSize().y << std::endl;
+    //    std::cout << "Widget height : " << m_widget->getLocalBounds().height << std::endl;
   }
 
 
 
   Label::~Label()
   {
-    delete m_text;
-    delete m_rt;
+  }
+
+
+
+  void Label::handle(sf::Event& event)
+  {
+
+  }
+
+
+
+  void Label::updateTexture()
+  {
+    Text::updateTexture();
+
+    m_widget->setTexture(m_rt->getTexture(), true);
   }
 
 
@@ -72,48 +69,4 @@ namespace UI
     return size;
   }
 */
-
-
-
-  void Label::buildStandard()
-  {
-    Core::FontManager* fm;
-
-    fm = Core::FontManager::getInstance();
-
-    m_text->setFont( fm->get(UI::Font::Standard) );
-    m_text->setColor(sf::Color::White);
-    m_text->setStyle(sf::Text::Regular);
-    m_text->setCharacterSize(24);
-  }
-
-
-
-  void Label::buildSection()
-  {
-    Core::FontManager* fm;
-
-    fm = Core::FontManager::getInstance();
-    this->buildStandard();
-    m_text->setFont( fm->get(UI::Font::Title) );
-    m_text->setCharacterSize(30);
-    m_text->setStyle(sf::Text::Bold);
-  }
-
-
-
-  void Label::buildTitle()
-  {
-    this->buildSection();
-    m_text->setCharacterSize(60);
-  }
-
-
-
-  void Label::buildLegend()
-  {
-    this->buildStandard();
-    m_text->setCharacterSize(20);
-    m_text->setStyle(sf::Text::Italic);
-  }
 }

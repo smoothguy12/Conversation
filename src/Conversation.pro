@@ -30,7 +30,9 @@ SOURCES += \
     text.cxx \
     widget.cxx \
     container.cxx \
-    label.cxx
+    label.cxx \
+    textbutton.cxx \
+    button.cxx
 
 HEADERS += \
     conversation.hxx \
@@ -59,7 +61,9 @@ HEADERS += \
     text.hxx \
     widget.hxx \
     container.hxx \
-    label.hxx
+    label.hxx \
+    textbutton.hxx \
+    button.hxx
 
 LIBS += -L/usr/include/SFML -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 LIBS += -L/usr/include/jsoncpp -ljsoncpp

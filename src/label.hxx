@@ -3,31 +3,22 @@
 #include "widget.hxx"
 #include <string>
 #include "text.hxx"
-#include <SFML/Graphics/Text.hpp>
-#include <SFML/Graphics/RenderTexture.hpp>
 
 namespace UI
 {
-  class Label : public Widget
+  class Label : public Widget, public Text
   {
   public:
     Label(std::string text, Text::Type type = Text::Standard);
     ~Label();
+    void handle(sf::Event& event);
     /*
     void move(float x, float y);
     void move(sf::Vector2f coords);
     sf::Drawable* getDrawable();
     sf::Vector2u getSize();
     */
-
-  private:
-    void buildStandard();
-    void buildSection();
-    void buildTitle();
-    void buildLegend();
-
-    sf::Text*           m_text;
-    sf::RenderTexture*  m_rt;
+    void updateTexture();
   };
 }
 

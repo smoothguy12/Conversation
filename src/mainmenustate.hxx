@@ -20,8 +20,8 @@ namespace Game
     void          notify(sf::Event &event);
     std::string   toString();
 
-//    UI::Text*    m_title;
-    UI::Widget*    m_title;
+    UI::Widget*   m_title;
+    UI::Widget*   m_play;
   };
 }
 

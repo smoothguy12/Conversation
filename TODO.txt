@@ -3,7 +3,8 @@ TODO
 
 Short-term :
 ============
-- Find a way to avoid code duplication between UI::Label and UI::Widget
+- BUG: fix the sf::Label rendering issue
+- Improve log functions in order to make them as convenient as std::cout
 - Managers (Music, Speech, Texture, Text)
 - Controllers
 

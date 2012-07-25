@@ -7,6 +7,7 @@
 #include "introstate.hxx"
 #include "mixer.hxx"
 #include "label.hxx"
+#include "textbutton.hxx"
 
 namespace Game
 {
@@ -38,6 +39,12 @@ namespace Game
     y = (w->getSize().y /8) - (m_title->getSize().y /2);
     m_title->move(x, y);
 
+    m_play = new UI::TextButton("Play");
+
+    x = (w->getSize().x / 2) - (m_play->getSize().x / 2);
+    y = (w->getSize().y / 2) - (m_play->getSize().y / 2);
+    m_play->move(x, y);
+
     log::putln(log::message, "Initialized Game::MainMenuState");
   }
 
@@ -50,8 +57,10 @@ namespace Game
     w = Core::Window::getInstance();
     w->detach(this);
     w->pull(m_title);
+    w->pull(m_play);
 
-    delete(m_title);
+    delete m_title;
+    delete m_play;
 
     log::putln(log::message, "Destroyed Game::MainMenuState");
   }
@@ -78,11 +87,13 @@ namespace Game
         Core::Mixer::getInstance()->play();
 
         w->push(m_title);
+        w->push(m_play);
       }
     else
       {
         Core::Mixer::getInstance()->pause();
         w->pull(m_title);
+        w->pull(m_play);
       }
 
     m_active = active;

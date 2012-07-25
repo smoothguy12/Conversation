@@ -15,7 +15,8 @@ namespace UI
     void          decreaseZOrder();
     void          gainFocus();
     void          loseFocus();
-    void          handle(sf::Event& event);
+    virtual void  handle(sf::Event& event) = 0;
+//    virtual void  update() = 0;
     void          move(float x, float y);
     void          move(sf::Vector2f coords);
     sf::Drawable* getDrawable();
@@ -23,9 +24,10 @@ namespace UI
     const int&    getZOrder();
 
   protected:
-    sf::Sprite*         m_sprite;
-    int                 m_zorder;
-    bool                m_focused;
+    sf::Sprite*   m_widget;
+    int           m_zorder;
+    bool          m_focused;
+    bool          m_mouseOver;
   };
 }
 

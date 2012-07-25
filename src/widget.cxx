@@ -1,21 +1,23 @@
 #include "widget.hxx"
 #include "container.hxx"
-#include <iostream>
 
 namespace UI
 {
   Widget::Widget()
   {
-    m_sprite = new sf::Sprite();
+    m_widget = new sf::Sprite();
     m_zorder = -1;
     m_focused = false;
+    m_mouseOver = false;
+
+    m_widget->move(0, 0);
   }
 
 
 
   Widget::~Widget()
   {
-    delete m_sprite;
+    delete m_widget;
   }
 
 
@@ -55,30 +57,23 @@ namespace UI
 
 
 
-  void Widget::handle(sf::Event& event)
-  {
-    std::cout << "Handling " << event.type << "\n";
-  }
-
-
-
   void Widget::move(float x, float y)
   {
-    m_sprite->move(x, y);
+    m_widget->move(x, y);
   }
 
 
 
   void Widget::move(sf::Vector2f coords)
   {
-    m_sprite->move(coords);
+    m_widget->move(coords);
   }
 
 
 
   sf::Drawable* Widget::getDrawable()
   {
-    return static_cast<sf::Drawable*>(m_sprite);
+    return static_cast<sf::Drawable*>(m_widget);
   }
 
 
@@ -88,7 +83,7 @@ namespace UI
     sf::FloatRect rect;
     sf::Vector2u  size;
 
-    rect    = m_sprite->getGlobalBounds();
+    rect    = m_widget->getGlobalBounds();
     size.x  = (rect.left + rect.width);
     size.y  = (rect.top + rect.height);
 
