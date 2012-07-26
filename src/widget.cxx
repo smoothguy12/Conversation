@@ -57,6 +57,59 @@ namespace UI
 
 
 
+  void Widget::handle(sf::Event &event)
+  {
+    if (event.type == sf::Event::MouseMoved)
+      {
+        if (m_widget->getGlobalBounds().contains(event.mouseMove.x, event.mouseMove.y))
+          {
+            m_mouseOver = true;
+            this->onMouseOver();
+          }
+        else
+          {
+            m_mouseOver = false;
+            this->onMouseExit();
+          }
+      }
+    else if (event.type == sf::Event::MouseButtonPressed)
+      {
+        if (event.mouseButton.button == sf::Mouse::Left)
+          {
+            if (m_mouseOver)
+              m_focused = true;
+            else
+              m_focused = false;
+          }
+      }
+  }
+
+
+
+  void Widget::onMouseOver()
+  {
+  }
+
+
+
+  void Widget::onMouseExit()
+  {
+  }
+
+
+
+  void Widget::onFocusGained()
+  {
+  }
+
+
+
+  void Widget::onFocusLost()
+  {
+  }
+
+
+
   void Widget::move(float x, float y)
   {
     m_widget->move(x, y);

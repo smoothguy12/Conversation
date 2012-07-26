@@ -3,36 +3,67 @@
 
 namespace UI
 {
+  Button::Button()
+  {
+    m_pushed = false;
+  }
+
+
+
   void Button::handle(sf::Event& event)
   {
-    if (event.type == sf::Event::MouseMoved)
+    Widget::handle(event);
+
+    if (event.type == sf::Event::MouseButtonPressed
+        && event.mouseButton.button == sf::Mouse::Left)
       {
-        if (m_widget->getGlobalBounds().contains(event.mouseMove.x, event.mouseMove.y))
+        if (m_mouseOver)
           {
-            m_mouseOver = true;
+            m_pushed = true;
+            this->onPush();
           }
         else
           {
-            m_mouseOver = false;
-          }
-      }
-
-    if (event.type == sf::Event::MouseButtonPressed)
-      {
-        if (event.mouseButton.button == sf::Mouse::Left && m_mouseOver)
-          {
-            m_focused = true;
-
-            this->onClick();
+            m_pushed = false;
+            this->onRelease();
           }
       }
     else if (event.type == sf::Event::MouseButtonReleased
              && event.mouseButton.button == sf::Mouse::Left
-             && m_focused)
+             && m_pushed)
       {
-        m_focused = false;
-
-        this->onRelease();
+        if (m_mouseOver)
+          {
+            this->onClick();
+            this->onRelease();
+          }
+        else
+          {
+            this->onResign();
+          }
       }
+  }
+
+
+
+  void Button::onPush()
+  {
+  }
+
+
+
+  void Button::onRelease()
+  {
+  }
+
+
+  void Button::onFocusGained()
+  {
+  }
+
+
+
+  void Button::onFocusLost()
+  {
   }
 }

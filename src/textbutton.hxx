@@ -13,8 +13,12 @@ namespace UI
     TextButton(std::string text);
     void handle(sf::Event& event);
     void updateTexture();
-    void onClick();
+    void onPush();
     void onRelease();
+    void onClick();
+    void onResign();
+    void onFocusGained();
+    void onFocusLost();
   };
 }
 

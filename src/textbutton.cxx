@@ -14,19 +14,7 @@ namespace UI
   {
     Button::handle(event);
 
-    if (event.type == sf::Event::MouseMoved)
-      {
-        if (m_widget->getGlobalBounds().contains(event.mouseMove.x, event.mouseMove.y))
-          {
-            m_text->setColor(sf::Color::Blue);
-          }
-        else
-          {
-            m_text->setColor(sf::Color::White);
-          }
-
-        this->updateTexture();
-      }
+    this->updateTexture();
   }
 
 
@@ -40,13 +28,14 @@ namespace UI
 
 
 
-  void TextButton::onClick()
+  void TextButton::onPush()
   {
     m_text->setColor(sf::Color::Black);
 
-    log::putln(log::trivial, "Click !");
-
     this->updateTexture();
+
+    m_focused = true;
+    this->onFocusGained();
   }
 
 
@@ -55,7 +44,37 @@ namespace UI
   {
     m_text->setColor(sf::Color::White);
 
-    log::putln(log::trivial, "Release !");
+    this->updateTexture();
+  }
+
+
+
+  void TextButton::onClick()
+  {
+    log::putln(log::trivial, "Text Click !");
+  }
+
+
+
+  void TextButton::onResign()
+  {
+    log::putln(log::trivial, "Text Resign !");
+  }
+
+
+
+  void TextButton::onFocusGained()
+  {
+    m_text->setColor(sf::Color::Blue);
+
+    this->updateTexture();
+  }
+
+
+
+  void TextButton::onFocusLost()
+  {
+    m_text->setColor(sf::Color::White);
 
     this->updateTexture();
   }

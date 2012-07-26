@@ -15,8 +15,11 @@ namespace UI
     void          decreaseZOrder();
     void          gainFocus();
     void          loseFocus();
-    virtual void  handle(sf::Event& event) = 0;
-//    virtual void  update() = 0;
+    virtual void  handle(sf::Event& event);
+    virtual void  onMouseOver();
+    virtual void  onMouseExit();
+    virtual void  onFocusGained();
+    virtual void  onFocusLost();
     void          move(float x, float y);
     void          move(sf::Vector2f coords);
     sf::Drawable* getDrawable();
