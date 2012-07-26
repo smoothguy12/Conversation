@@ -2,7 +2,7 @@
 #include <SFML/Window/Event.hpp>
 #include "log.hxx"
 #include "context.hxx"
-#include "window.hxx"
+#include "Core/window.hxx"
 
 namespace Game
 {

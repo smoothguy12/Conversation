@@ -2,7 +2,7 @@
 #define MAINMENUSTATE_HXX
 #include "state.hxx"
 #include "context.hxx"
-#include "widget.hxx"
+#include "UI/widget.hxx"
 
 namespace Game
 {

@@ -1,9 +1,8 @@
 #include "text.hxx"
-#include "fontmanager.hxx"
+#include "Core/fontmanager.hxx"
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Text.hpp>
-#include <iostream>
-#include "window.hxx"
+#include "Core/window.hxx"
 
 namespace UI
 {

@@ -1,7 +1,7 @@
 #ifndef ENTITYFACTORY_HXX
 #define ENTITYFACTORY_HXX
-#include "singleton.hxx"
-#include "entity.hxx"
+#include "Core/singleton.hxx"
+#include "Entities/entity.hxx"
 #include <string>
 #include <map>
 #include "log.hxx"

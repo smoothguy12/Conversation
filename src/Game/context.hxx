@@ -3,7 +3,7 @@
 #include <list>
 #include "state.hxx"
 #include <vector>
-#include "character.hxx"
+#include "Entities/character.hxx"
 
 namespace Game
 {

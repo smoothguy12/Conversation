@@ -1,10 +1,10 @@
 #include "introstate.hxx"
 #include <SFML/Window/Event.hpp>
-#include "window.hxx"
+#include "Core/window.hxx"
 #include "log.hxx"
 #include "context.hxx"
 #include "playingstate.hxx"
-#include "mixer.hxx"
+#include "Core/mixer.hxx"
 
 
 namespace Game

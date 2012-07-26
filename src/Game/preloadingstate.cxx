@@ -3,8 +3,8 @@
 #include "log.hxx"
 #include "context.hxx"
 #include "mainmenustate.hxx"
-#include "mixer.hxx"
-#include "fontmanager.hxx"
+#include "Core/mixer.hxx"
+#include "Core/fontmanager.hxx"
 
 
 namespace Game

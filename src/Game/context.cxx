@@ -1,13 +1,13 @@
 #include "context.hxx"
-#include "window.hxx"
+#include "Core/window.hxx"
 #include "log.hxx"
-#include "settings.hxx"
+#include "Core/settings.hxx"
 #include "preloadingstate.hxx"
-#include "mixer.hxx"
-#include "fontmanager.hxx"
+#include "Core/mixer.hxx"
+#include "Core/fontmanager.hxx"
 
 // TEMP
-#include "entityfactory.hxx"
+#include "Core/entityfactory.hxx"
 
 namespace Game
 {

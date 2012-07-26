@@ -2,12 +2,12 @@
 #include <SFML/Window/Event.hpp>
 #include "log.hxx"
 #include "context.hxx"
-#include "window.hxx"
-#include "settings.hxx"
+#include "Core/window.hxx"
+#include "Core/settings.hxx"
 #include "introstate.hxx"
-#include "mixer.hxx"
-#include "label.hxx"
-#include "textbutton.hxx"
+#include "Core/mixer.hxx"
+#include "UI/label.hxx"
+#include "UI/textbutton.hxx"
 
 namespace Game
 {

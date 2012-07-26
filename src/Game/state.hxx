@@ -1,6 +1,6 @@
 #ifndef STATE_HXX
 #define STATE_HXX
-#include "observer.hxx"
+#include "Core/observer.hxx"
 #include "context.hxx"
 
 namespace Game

@@ -1,6 +1,6 @@
 #include "conversation.hxx"
 
-namespace RPG
+namespace Game
 {
   Conversation::Conversation()
   {

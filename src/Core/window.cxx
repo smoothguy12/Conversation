@@ -1,9 +1,9 @@
-#include "window.hxx"
+#include "Core/window.hxx"
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
-#include "settings.hxx"
+#include "Core/settings.hxx"
 #include "log.hxx"
-#include "widget.hxx"
+#include "UI/widget.hxx"
 
 namespace Core
 {

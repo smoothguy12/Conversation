@@ -1,12 +1,12 @@
 #ifndef WINDOW_HXX
 #define WINDOW_HXX
-#include "singleton.hxx"
+#include "Core/singleton.hxx"
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
-#include "observable.hxx"
-#include "observer.hxx"
-#include "widget.hxx"
-#include "container.hxx"
+#include "Core/observable.hxx"
+#include "Core/observer.hxx"
+#include "UI/widget.hxx"
+#include "UI/container.hxx"
 #include <list>
 #include <map>
 

@@ -3,63 +3,64 @@ CONFIG += console
 CONFIG -= qt
 
 SOURCES += \
-    conversation.cxx \
+    Game/conversation.cxx \
     main.cxx \
-    context.cxx \
-    state.cxx \
-    singleton.cxx \
-    window.cxx \
-    settings.cxx \
+    Game/context.cxx \
+    Game/state.cxx \
+    Core/singleton.cxx \
+    Core/window.cxx \
+    Core/settings.cxx \
     log.cxx \
-    reader.cxx \
-    introstate.cxx \
-    observer.cxx \
-    observable.cxx \
-    playingstate.cxx \
-    entityfactory.cxx \
-    entity.cxx \
-    character.cxx \
-    mixer.cxx \
-    vectorreader.cxx \
-    preloadingstate.cxx \
-    mainmenustate.cxx \
-    fontmanager.cxx \
-    mapreader.cxx \
-    text.cxx \
-    widget.cxx \
-    container.cxx \
-    label.cxx \
-    textbutton.cxx \
-    button.cxx
+    Core/reader.cxx \
+    Game/introstate.cxx \
+    Core/observer.cxx \
+    Core/observable.cxx \
+    Game/playingstate.cxx \
+    Core/entityfactory.cxx \
+    Entities/entity.cxx \
+    Entities/character.cxx \
+    Core/mixer.cxx \
+    Core/vectorreader.cxx \
+    Game/preloadingstate.cxx \
+    Game/mainmenustate.cxx \
+    Core/fontmanager.cxx \
+    Core/mapreader.cxx \
+    UI/text.cxx \
+    UI/widget.cxx \
+    UI/container.cxx \
+    UI/label.cxx \
+    UI/textbutton.cxx \
+    UI/button.cxx
 
 HEADERS += \
-    conversation.hxx \
-    context.hxx \
-    state.hxx \
-    singleton.hxx \
-    window.hxx \
-    settings.hxx \
+    Game/conversation.hxx \
+    Game/context.hxx \
+    Game/state.hxx \
+    Core/singleton.hxx \
+    Core/window.hxx \
+    Core/settings.hxx \
     log.hxx \
-    reader.hxx \
-    introstate.hxx \
-    observer.hxx \
-    observable.hxx \
-    playingstate.hxx \
-    entityfactory.hxx \
-    entity.hxx \
-    character.hxx \
-    mixer.hxx \
-    vectorreader.hxx \
-    preloadingstate.hxx \
-    mainmenustate.hxx \
-    fontmanager.hxx \
-    mapreader.hxx \
-    text.hxx \
-    widget.hxx \
-    container.hxx \
-    label.hxx \
-    textbutton.hxx \
-    button.hxx
+    Core/reader.hxx \
+    Game/introstate.hxx \
+    Core/observer.hxx \
+    Core/observable.hxx \
+    Game/playingstate.hxx \
+    Core/entityfactory.hxx \
+    Entities/entity.hxx \
+    Entities/character.hxx \
+    Core/mixer.hxx \
+    Core/vectorreader.hxx \
+    Game/preloadingstate.hxx \
+    Game/mainmenustate.hxx \
+    Core/fontmanager.hxx \
+    Core/mapreader.hxx \
+    UI/text.hxx \
+    UI/widget.hxx \
+    UI/container.hxx \
+    UI/label.hxx \
+    UI/textbutton.hxx \
+    UI/button.hxx \
+    UI/label.hxx
 
 LIBS += -L/usr/include/SFML -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 LIBS += -L/usr/include/jsoncpp -ljsoncpp
