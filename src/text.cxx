@@ -2,6 +2,8 @@
 #include "fontmanager.hxx"
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Text.hpp>
+#include <iostream>
+#include "window.hxx"
 
 namespace UI
 {
@@ -18,13 +20,8 @@ namespace UI
       default:            this->buildStandard();  break;
       }
 
-    /*
-     * sf::Text::getGlobalBounds() seems to return an invalid height value.
-     * More precisely, there seems to be a problem in sf::Glyph. Text will
-     * therefore be half-cut.
-     * See: https://github.com/LaurentGomila/SFML/issues/216
-     */
-    m_rt->create(m_text->getGlobalBounds().width, m_text->getGlobalBounds().height);
+    m_rt->create(m_text->getGlobalBounds().left + m_text->getGlobalBounds().width,
+                 m_text->getGlobalBounds().top + m_text->getGlobalBounds().height);
 
     this->updateTexture();
   }

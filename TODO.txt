@@ -3,7 +3,6 @@ TODO
 
 Short-term :
 ============
-- BUG: fix the sf::Label rendering issue
 - Improve log functions in order to make them as convenient as std::cout
 - Managers (Music, Speech, Texture, Text)
 - Controllers
