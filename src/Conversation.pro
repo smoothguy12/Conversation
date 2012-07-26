@@ -19,8 +19,6 @@ SOURCES += \
     entityfactory.cxx \
     entity.cxx \
     character.cxx \
-    drawable.cxx \
-    transformable.cxx \
     mixer.cxx \
     vectorreader.cxx \
     preloadingstate.cxx \
@@ -50,8 +48,6 @@ HEADERS += \
     entityfactory.hxx \
     entity.hxx \
     character.hxx \
-    drawable.hxx \
-    transformable.hxx \
     mixer.hxx \
     vectorreader.hxx \
     preloadingstate.hxx \
