@@ -1,6 +1,8 @@
 #ifndef LOG_HXX
 #define LOG_HXX
+#include <iostream>
 #include <string>
+#define ERRLVL 6
 
 namespace log
 {
@@ -16,8 +18,47 @@ namespace log
     all = 9
   };
 
-  void put(unsigned int err_lvl, std::string str);
-  void putln(unsigned int err_lvl, std::string str);
+  template<typename T>
+  void put(unsigned int err_lvl, T value);
+
+  template<typename T>
+  void putln(unsigned int err_lvl, T value);
+
+
+
+  template<typename T>
+  void put(unsigned int err_lvl, T value)
+  {
+    std::string prefix;
+
+    if (err_lvl <= ERRLVL and err_lvl > 0)
+      {
+        switch (err_lvl)
+          {
+          case log::fatal:    prefix = "!!! FATAL";   break;
+          case log::error:    prefix = "/!\\ ERROR";  break;
+          case log::warning:  prefix = "--- WARNING"; break;
+          default:            prefix = "";
+          }
+
+        if (!prefix.empty())
+          std::cout << prefix + ": ";
+
+        std::cout << value;
+      }
+  }
+
+
+
+  template<typename T>
+  void putln(unsigned int err_lvl, T value)
+  {
+    if (err_lvl <= ERRLVL and ERRLVL > 0)
+      {
+        put(err_lvl, value);
+        std::cout << std::endl;
+      }
+  }
 }
 
 #endif // LOG_HXX
