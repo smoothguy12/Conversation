@@ -5,6 +5,7 @@
 #include "mainmenustate.hxx"
 #include "Core/mixer.hxx"
 #include "Core/fontmanager.hxx"
+#include "UI/layout.hxx"
 
 
 namespace Game
@@ -41,6 +42,8 @@ namespace Game
       {
         Core::Mixer::getInstance();
         Core::FontManager::getInstance();
+        UI::Layout::getInstance()->loadColors("data/System/colors.json");
+
         m_context->setState(new MainMenuState(m_context));
 
       }

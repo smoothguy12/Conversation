@@ -30,7 +30,8 @@ SOURCES += \
     UI/container.cxx \
     UI/label.cxx \
     UI/textbutton.cxx \
-    UI/button.cxx
+    UI/button.cxx \
+    UI/layout.cxx
 
 HEADERS += \
     Game/conversation.hxx \
@@ -60,7 +61,8 @@ HEADERS += \
     UI/label.hxx \
     UI/textbutton.hxx \
     UI/button.hxx \
-    UI/label.hxx
+    UI/label.hxx \
+    UI/layout.hxx
 
 LIBS += -L/usr/include/SFML -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 LIBS += -L/usr/include/jsoncpp -ljsoncpp

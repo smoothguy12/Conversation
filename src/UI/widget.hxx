@@ -2,6 +2,7 @@
 #define WIDGET_HXX
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Window/Event.hpp>
+#include <string>
 
 namespace UI
 {
@@ -29,8 +30,10 @@ namespace UI
   protected:
     sf::Sprite*   m_widget;
     int           m_zorder;
+    int           m_tabIndex;
     bool          m_focused;
     bool          m_mouseOver;
+    std::string   m_identifier;
   };
 }
 

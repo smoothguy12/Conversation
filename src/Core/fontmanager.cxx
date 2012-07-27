@@ -37,14 +37,14 @@ namespace Core
           }
       }
 
-    log::putln(log::message, "Initialized Core::FontManager.");
+    log::putln(log::message, "Initialized Core::FontManager");
   }
 
   FontManager::~FontManager()
   {
     m_fonts.clear();
 
-    log::putln(log::message, "Destroyed Core::FontManager.");
+    log::putln(log::message, "Destroyed Core::FontManager");
   }
 
   sf::Font& FontManager::get(UI::Font::Style type)

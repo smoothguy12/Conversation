@@ -30,6 +30,7 @@ namespace UI
 
   void TextButton::onPush()
   {
+    // FIXME: Conflicts with onFocusGained: I should change something else.
     m_text->setColor(sf::Color::Black);
 
     this->updateTexture();

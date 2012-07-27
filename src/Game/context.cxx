@@ -5,6 +5,7 @@
 #include "preloadingstate.hxx"
 #include "Core/mixer.hxx"
 #include "Core/fontmanager.hxx"
+#include "UI/layout.hxx"
 
 // TEMP
 #include "Core/entityfactory.hxx"
@@ -49,11 +50,13 @@ namespace Game
         itc = m_characters.erase(itc);
       }
 
+    // FIXME: Delegate this to another class.
     Core::FontManager::destroyInstance();
     Core::Mixer::destroyInstance();
     Core::Settings::destroyInstance();
     Core::EntityFactory::destroyInstance();
     Core::Window::destroyInstance();
+    UI::Layout::destroyInstance();
 
     log::putln(log::message, "Destroyed Game::Context");
   }
