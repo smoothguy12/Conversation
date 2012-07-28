@@ -41,7 +41,7 @@ namespace Game
     y = (w->getSize().y /8) - (m_title->getSize().y /2);
     m_title->move(x, y);
 
-    m_play = new UI::TextButton("Play");
+    m_play = new UI::TextButton("1. Play");
 
     x = (w->getSize().x / 2) - (m_play->getSize().x / 2);
     y = (w->getSize().y / 2) - (m_play->getSize().y / 2);
