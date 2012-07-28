@@ -27,10 +27,10 @@ namespace UI
     Core::Reader  reader = Core::Reader(fileName);
     Json::Value   content;
     unsigned int  index;
-    bool          loaded;
+    bool          error;
 
     content = reader.get();
-    loaded  = false;
+    error   = false;
 
     if (!reader.isValid())
       {
@@ -60,17 +60,18 @@ namespace UI
             else
               {
                 log::putln(log::trivial, "Fail!");
-                return ;
+                error = true;
+                break;
               }
           }
       }
 
     log::putln(log::trivial, "Ok!");
 
-    if (loaded)
-      m_hasColors = true;
-    else
+    if (error)
       m_hasColors = false;
+    else
+      m_hasColors = true;
   }
 
 
