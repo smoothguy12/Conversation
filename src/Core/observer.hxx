@@ -2,6 +2,7 @@
 #define OBSERVER_HXX
 #include <string>
 #include <SFML/Window/Event.hpp>
+#include "log.hxx"
 
 namespace Core
 {
@@ -9,7 +10,10 @@ namespace Core
   class Observer
   {
   public:
-    virtual void notify(Thing& event) = 0;
+    virtual void notify(Thing& event)
+    {
+      log::putln( log::flood, std::string("Notified of " + event.type) );
+    }
     virtual std::string toString() = 0;
   };
 }

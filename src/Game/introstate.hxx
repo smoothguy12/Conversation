@@ -20,9 +20,6 @@ namespace Game
     // Observer<sf::Event>
     void notify(sf::Event& event);
 
-    // Observer<Core::Event>
-    void notify(Core::Event& event);
-
     // Observer
     std::string toString();
   };

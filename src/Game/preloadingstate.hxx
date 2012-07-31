@@ -15,11 +15,6 @@ namespace Game
     void execute();
     void activate(bool active);
 
-    // Observer<sf::Event>
-    void notify(sf::Event &event);
-
-    void notify(Core::Event& event);
-
     // Observer
     std::string toString();
   };

@@ -56,28 +56,6 @@ namespace Game
 
 
 
-  // Observer<sf::Event>
-  void PreloadingState::notify(sf::Event& event)
-  {
-    if (m_active)
-      {
-        // Avoid unused parameter warning...
-        if (event.type == sf::Event::Closed)
-          {
-          }
-      }
-  }
-
-
-
-  // Observer<Core::Event>
-  void PreloadingState::notify(Core::Event& event)
-  {
-
-  }
-
-
-
   // Observer
   std::string PreloadingState::toString()
   {

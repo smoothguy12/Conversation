@@ -65,14 +65,6 @@ namespace Game
 
 
 
-  // Observer<Core::Event>
-  void PlayingState::notify(Core::Event& event)
-  {
-
-  }
-
-
-
   // Observer
   std::string PlayingState::toString()
   {

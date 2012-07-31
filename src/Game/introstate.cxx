@@ -75,14 +75,6 @@ namespace Game
 
 
 
-  // Observer<Core::Event>
-  void IntroState::notify(Core::Event& event)
-  {
-
-  }
-
-
-
   // Observer
   std::string IntroState::toString()
   {

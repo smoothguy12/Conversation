@@ -11,6 +11,7 @@ namespace Core
   class Observable
   {
   public:
+    virtual ~Observable() {}
     virtual void attach(Observer<Thing>* observer, Type eventType) = 0;
     virtual void detach(Observer<Thing>* observer) = 0;
     virtual void detach(Observer<Thing>* observer, Type eventType) = 0;
