@@ -17,7 +17,7 @@ namespace UI
     if (event.type == sf::Event::MouseButtonPressed
         && event.mouseButton.button == sf::Mouse::Left)
       {
-        if (m_mouseOver)
+        if (m_mouse_over)
           {
             m_pushed = true;
             this->onPush();
@@ -32,7 +32,7 @@ namespace UI
              && event.mouseButton.button == sf::Mouse::Left
              && m_pushed)
       {
-        if (m_mouseOver)
+        if (m_mouse_over)
           {
             this->onClick();
             this->onRelease();

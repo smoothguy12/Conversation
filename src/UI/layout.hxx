@@ -21,7 +21,7 @@ namespace UI
     Layout();
     ~Layout();
 
-    bool                              m_hasColors;
+    bool                              m_has_colors;
     bool                              m_initialized;
     std::map<std::string, sf::Color>  m_colors;
   };

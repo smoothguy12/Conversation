@@ -7,12 +7,17 @@
 #include "Core/observer.hxx"
 #include "UI/widget.hxx"
 #include "UI/container.hxx"
+#include "Core/eventpump.hxx"
 #include <list>
 #include <map>
 
 namespace Core
 {
-  class Window : public Singleton<Window>, public Observable, public UI::Container
+  class Window :
+      public Singleton<Window>,
+      public Observable,
+      public EventPump,
+      public UI::Container
   {
   public:
     friend class Singleton<Window>;

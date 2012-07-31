@@ -2,13 +2,13 @@
 #define WIDGET_HXX
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Window/Event.hpp>
-#include <string>
 
 namespace UI
 {
   class Widget
   {
   public:
+    static unsigned int giveIdentifier();
     Widget();
     virtual ~Widget();
     void          setZOrder(int zorder);
@@ -27,13 +27,15 @@ namespace UI
     sf::Vector2u  getSize();
     const int&    getZOrder();
 
+    static unsigned int s_free_id;
+
   protected:
     sf::Sprite*   m_widget;
     int           m_zorder;
-    int           m_tabIndex;
+    int           m_tab_index;
     bool          m_focused;
-    bool          m_mouseOver;
-    std::string   m_identifier;
+    bool          m_mouse_over;
+    unsigned int  m_identifier;
   };
 }
 

@@ -12,12 +12,6 @@ namespace UI
     Label(std::string text, Text::Type type = Text::Standard);
     ~Label();
     void handle(sf::Event& event);
-    /*
-    void move(float x, float y);
-    void move(sf::Vector2f coords);
-    sf::Drawable* getDrawable();
-    sf::Vector2u getSize();
-    */
     void updateTexture();
   };
 }

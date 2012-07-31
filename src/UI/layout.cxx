@@ -7,7 +7,7 @@ namespace UI
 {
   Layout::Layout()
   {
-    m_hasColors = false;
+    m_has_colors = false;
     m_initialized = false;
 
     log::putln(log::message, "Initialized UI::Layout");
@@ -69,16 +69,16 @@ namespace UI
     log::putln(log::trivial, "Ok!");
 
     if (error)
-      m_hasColors = false;
+      m_has_colors = false;
     else
-      m_hasColors = true;
+      m_has_colors = true;
   }
 
 
 
   const sf::Color& Layout::getColor(std::string name)
   {
-    if (m_hasColors)
+    if (m_has_colors)
       {
         std::map<std::string, sf::Color>::iterator itr;
 

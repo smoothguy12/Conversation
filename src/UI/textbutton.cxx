@@ -1,5 +1,7 @@
 #include "textbutton.hxx"
 #include "log.hxx"
+#include "Core/window.hxx"
+#include "Core/event.hxx"
 
 namespace UI
 {
@@ -52,6 +54,12 @@ namespace UI
 
   void TextButton::onClick()
   {
+    Core::Event event;
+
+    event.type              = Core::Event::ButtonClicked;
+    event.button.identifier = m_identifier;
+    Core::Window::getInstance()->inject(event);
+
     log::putln(log::trivial, "Text Click !");
   }
 

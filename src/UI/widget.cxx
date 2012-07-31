@@ -3,12 +3,22 @@
 
 namespace UI
 {
+  unsigned int Widget::s_free_id = 0;
+
+  unsigned int Widget::giveIdentifier()
+  {
+    return s_free_id++;
+  }
+
+
+
   Widget::Widget()
   {
-    m_widget = new sf::Sprite();
-    m_zorder = -1;
-    m_focused = false;
-    m_mouseOver = false;
+    m_widget      = new sf::Sprite();
+    m_zorder      = 0;
+    m_focused     = false;
+    m_mouse_over  = false;
+    m_identifier  = Widget::giveIdentifier();
 
     m_widget->move(0, 0);
   }
@@ -63,12 +73,12 @@ namespace UI
       {
         if (m_widget->getGlobalBounds().contains(event.mouseMove.x, event.mouseMove.y))
           {
-            m_mouseOver = true;
+            m_mouse_over = true;
             this->onMouseOver();
           }
         else
           {
-            m_mouseOver = false;
+            m_mouse_over = false;
             this->onMouseExit();
           }
       }
@@ -76,7 +86,7 @@ namespace UI
       {
         if (event.mouseButton.button == sf::Mouse::Left)
           {
-            if (m_mouseOver)
+            if (m_mouse_over)
               m_focused = true;
             else
               m_focused = false;
