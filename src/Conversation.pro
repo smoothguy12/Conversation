@@ -72,4 +72,4 @@ LIBS += -L/usr/include/SFML -lsfml-system -lsfml-window -lsfml-graphics -lsfml-a
 LIBS += -L/usr/include/jsoncpp -ljsoncpp
 
 OTHER_FILES += \
-    singleton.inc
+    Core/singleton.inc
