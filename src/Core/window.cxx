@@ -50,12 +50,14 @@ namespace Core
 
   void Window::update()
   {
-    std::map<sf::Event::EventType, std::list<Observer*> >::iterator itm;
-    std::list<Observer*>::iterator itl;
+    std::map<sf::Event::EventType, std::list<Observer<sf::Event>*> >::iterator itm;
+    std::list<Observer<sf::Event>*>::iterator itl;
+    std::map<Core::Event::EventType, std::list<Observer<Core::Event>*> >::iterator itmc;
+    std::list<Observer<Core::Event>*>::iterator itlc;
 
     while (m_window.pollEvent(m_event))
       {
-        for (itm = m_observers.begin(); itm != m_observers.end(); itm++)
+        for (itm = m_sf_observers.begin(); itm != m_sf_observers.end(); itm++)
           {
             if (itm->first == m_event.type)
               {
@@ -72,6 +74,20 @@ namespace Core
           }
 
         this->dispatch(m_event);
+      }
+
+    if (this->pump(m_core_event))
+      {
+        for (itmc = m_core_observers.begin(); itmc != m_core_observers.end(); itmc++)
+          {
+            if (itmc->first == m_core_event.type)
+              {
+                for (itlc = itmc->second.begin(); itlc != itmc->second.end(); itlc++)
+                  {
+                    (*itlc)->notify(m_core_event);
+                  }
+              }
+          }
       }
   }
 
@@ -91,83 +107,46 @@ namespace Core
 
 
 
-  // Observable
-  void Window::attach(Observer* observer, sf::Event::EventType eventType)
+  // Observable<sf::Event, sf::Event::EventType>
+  void Window::attach(Observer<sf::Event>* observer, sf::Event::EventType eventType)
   {
-    std::map<sf::Event::EventType, std::list<Observer*> >::iterator itm;
-    std::list<Observer*>::iterator itl;
-    bool found;
-
-    found = false;
-
-    itm = m_observers.find(eventType);
-
-    if (itm != m_observers.end())
-      {
-        for (itl = itm->second.begin(); itl != itm->second.end(); itl++)
-          {
-            if (*itl == observer)
-              {
-                found = true;
-
-                log::putln(log::warning, "Called Window::attach() more than one time.");
-              }
-          }
-      }
-
-    if (!found)
-      m_observers[eventType].push_back(observer);
+    this->internal_attach(m_sf_observers, observer, eventType);
   }
 
 
 
-  void Window::detach(Observer* observer)
+  void Window::detach(Observer<sf::Event>* observer)
   {
-    std::map<sf::Event::EventType, std::list<Observer*> >::iterator itm;
-    std::list<Observer*>::iterator itl;
-
-    for (itm = m_observers.begin(); itm != m_observers.end(); itm++)
-      {
-        for (itl = itm->second.begin(); itl != itm->second.end(); )
-          {
-            if ( *itl == observer)
-              {
-                itl = itm->second.erase(itl);
-              }
-            else
-              {
-                itl++;
-              }
-          }
-      }
+    this->internal_detach(m_sf_observers, observer);
   }
 
 
 
-  void Window::detach(Observer* observer, sf::Event::EventType eventType)
+  void Window::detach(Observer<sf::Event>* observer, sf::Event::EventType eventType)
   {
-    std::map<sf::Event::EventType, std::list<Observer*> >::iterator itm;
-    std::list<Observer*>::iterator itl;
+    this->internal_detach(m_sf_observers, observer, eventType);
+  }
 
-    for (itm = m_observers.begin(); itm != m_observers.end(); itm++)
-      {
-        for (itl = itm->second.begin(); itl != itm->second.end(); )
-          {
-            if ( *itl == observer)
-              {
-                if ( itm->first == eventType)
-                  {
-                    itl = itm->second.erase(itl);
-                  }
-                else
-                  itl++;
-              }
-            else
-              {
-                itl++;
-              }
-          }
-      }
+
+
+  // Observable<Core::Event, Core::Event::EventType>
+  void Window::attach(Observer<Core::Event>* observer, Core::Event::EventType eventType)
+  {
+    this->internal_attach(m_core_observers, observer, eventType);
+  }
+
+
+
+  void Window::detach(Observer<Core::Event>* observer)
+  {
+    this->internal_detach(m_core_observers, observer);
+  }
+
+
+
+  void Window::detach(Observer<Core::Event>* observer, Core::Event::EventType eventType)
+  {
+    this->internal_detach(m_core_observers, observer, eventType);
   }
 
 

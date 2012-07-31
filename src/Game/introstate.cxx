@@ -24,7 +24,7 @@ namespace Game
 
   IntroState::~IntroState()
   {
-    Core::Window::getInstance()->detach(this);
+    Core::Window::getInstance()->detach(this, sf::Event::KeyPressed);
 
     log::putln(log::message, "Destroyed Game::IntroState");
   }
@@ -56,7 +56,7 @@ namespace Game
 
 
 
-  // Observer
+  // Observer<sf::Event>
   void IntroState::notify(sf::Event& event)
   {
     if (m_active)
@@ -75,6 +75,15 @@ namespace Game
 
 
 
+  // Observer<Core::Event>
+  void IntroState::notify(Core::Event& event)
+  {
+
+  }
+
+
+
+  // Observer
   std::string IntroState::toString()
   {
     return "Game::IntroState";

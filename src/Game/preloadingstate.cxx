@@ -56,7 +56,7 @@ namespace Game
 
 
 
-  // Observer
+  // Observer<sf::Event>
   void PreloadingState::notify(sf::Event& event)
   {
     if (m_active)
@@ -70,6 +70,15 @@ namespace Game
 
 
 
+  // Observer<Core::Event>
+  void PreloadingState::notify(Core::Event& event)
+  {
+
+  }
+
+
+
+  // Observer
   std::string PreloadingState::toString()
   {
     return "Game::PreloadingState";

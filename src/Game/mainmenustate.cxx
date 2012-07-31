@@ -32,6 +32,8 @@ namespace Game
     w->attach(this, sf::Event::MouseButtonReleased);
     w->attach(this, sf::Event::MouseWheelMoved);
 
+    w->attach(this, Core::Event::ButtonClicked);
+
     m_title = new UI::Label(s->get<std::string>("window.title"),
                            UI::Text::Title);
 
@@ -55,7 +57,15 @@ namespace Game
     Core::Window* w;
 
     w = Core::Window::getInstance();
-    w->detach(this);
+
+    /* FIXME: The static_cast is a workaround to make the compiler understand
+     * that we are willing to call Core::Window::detach<Observer<sf::Event>*>().
+     * I'm pretty sure there's a prettier way to avoid that, but I've not found
+     * it yet.
+     */
+    w->detach(static_cast<Observer<sf::Event>*>(this));
+    w->detach(static_cast<Observer<Core::Event>*>(this));
+
     w->pull(m_title);
     w->pull(m_play);
 
@@ -101,7 +111,7 @@ namespace Game
 
 
 
-  // Observer
+  // Observer<sf::Event>
   void MainMenuState::notify(sf::Event& event)
   {
     if (m_active)
@@ -121,6 +131,21 @@ namespace Game
 
 
 
+  // Observer<Core::Event>
+  void MainMenuState::notify(Core::Event& event)
+  {
+    if (event.type == Core::Event::ButtonClicked)
+      {
+        if (event.button.identifier == m_play->getIdentifier())
+          {
+            m_context->setState(new IntroState(m_context));
+          }
+      }
+  }
+
+
+
+  // Observer
   std::string MainMenuState::toString()
   {
     return "Game::MainMenuState";

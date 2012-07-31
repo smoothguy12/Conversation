@@ -4,26 +4,35 @@ namespace Core
 {
   EventPump::~EventPump()
   {
-    // TODO: Clear m_events.
+    // TODO: Clear m_core_events.
   }
 
 
 
   void EventPump::inject(Event event)
   {
-    m_events.push_back(event);
+    m_core_events.push_back(event);
   }
 
 
 
-  void EventPump::pump(Event& event)
+  bool EventPump::pump(Event& event)
   {
     std::vector<Event>::iterator itr;
+    unsigned int size;
 
-    for (itr = m_events.begin(); itr != m_events.end(); )
+    size = m_core_events.size();
+
+    for (itr = m_core_events.begin(); itr != m_core_events.end(); )
       {
         event = *itr;
-        itr   = m_events.erase(itr);
+        m_core_events.erase(itr);
+        break;
       }
+
+    if (size != 0)
+      return true;
+    else
+      return false;
   }
 }

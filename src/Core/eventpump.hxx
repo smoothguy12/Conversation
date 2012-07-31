@@ -10,12 +10,12 @@ namespace Core
   public:
     virtual ~EventPump();
     virtual void inject(Event event);
-    virtual void pump(Event& event);
+    virtual bool pump(Event& event);
 
   protected:
     EventPump() {}
 
-    std::vector<Event> m_events;
+    std::vector<Event> m_core_events;
   };
 }
 

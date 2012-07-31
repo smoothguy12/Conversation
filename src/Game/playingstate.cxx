@@ -21,7 +21,7 @@ namespace Game
 
   PlayingState::~PlayingState()
   {
-    Core::Window::getInstance()->detach(this);
+    Core::Window::getInstance()->detach(this, sf::Event::KeyPressed);
 
     log::putln(log::message, "Destroyed Game::PlayingState");
   }
@@ -50,7 +50,7 @@ namespace Game
 
 
 
-  // Observer
+  // Observer<sf::Event>
   void PlayingState::notify(sf::Event& event)
   {
     if (m_active)
@@ -65,6 +65,15 @@ namespace Game
 
 
 
+  // Observer<Core::Event>
+  void PlayingState::notify(Core::Event& event)
+  {
+
+  }
+
+
+
+  // Observer
   std::string PlayingState::toString()
   {
     return "Game::PlayingState";

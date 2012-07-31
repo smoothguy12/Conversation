@@ -15,21 +15,32 @@ namespace Core
 {
   class Window :
       public Singleton<Window>,
-      public Observable,
+      public Observable<sf::Event, sf::Event::EventType>,
+      public Observable<Core::Event, Core::Event::EventType>,
       public EventPump,
       public UI::Container
   {
   public:
     friend class Singleton<Window>;
+    using Observable<sf::Event, sf::Event::EventType>::internal_attach;
+    using Observable<sf::Event, sf::Event::EventType>::internal_detach;
+    using Observable<Core::Event, Core::Event::EventType>::internal_attach;
+    using Observable<Core::Event, Core::Event::EventType>::internal_detach;
+
     void          draw();
     void          update();
     bool          isShown();
     sf::Vector2u  getSize();
 
-    // Observable
-    void attach(Observer* observer, sf::Event::EventType eventType);
-    void detach(Observer* observer);
-    void detach(Observer* observer, sf::Event::EventType eventType);
+    // Observable<sf::Event, sf::Event::EventType>
+    void attach(Observer<sf::Event>* observer, sf::Event::EventType eventType);
+    void detach(Observer<sf::Event>* observer);
+    void detach(Observer<sf::Event>* observer, sf::Event::EventType eventType);
+
+    // Observable<Core::Event, Core::Event::EventType>
+    void attach(Observer<Core::Event>* observer, Core::Event::EventType eventType);
+    void detach(Observer<Core::Event>* observer);
+    void detach(Observer<Core::Event>* observer, Core::Event::EventType eventType);
 
     // Rendering
     void push(sf::Drawable* drawable);
@@ -45,9 +56,11 @@ namespace Core
 
     sf::RenderWindow  m_window;
     sf::Event         m_event;
+    Core::Event       m_core_event;
 
     // Observable
-    std::map<sf::Event::EventType, std::list<Observer*> > m_observers;
+    std::map<sf::Event::EventType, std::list<Observer<sf::Event>*> > m_sf_observers;
+    std::map<Core::Event::EventType, std::list<Observer<Core::Event>*> > m_core_observers;
 
     // Rendering
     std::list<sf::Drawable*>  m_rendering;

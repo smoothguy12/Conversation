@@ -5,10 +5,11 @@
 
 namespace Core
 {
+  template<typename Thing>
   class Observer
   {
   public:
-    virtual void notify(sf::Event& event) = 0;
+    virtual void notify(Thing& event) = 0;
     virtual std::string toString() = 0;
   };
 }

@@ -159,4 +159,11 @@ namespace UI
   {
     return m_zorder;
   }
+
+
+
+  unsigned int Widget::getIdentifier()
+  {
+    return m_identifier;
+  }
 }

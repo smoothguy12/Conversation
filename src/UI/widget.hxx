@@ -26,6 +26,7 @@ namespace UI
     sf::Drawable* getDrawable();
     sf::Vector2u  getSize();
     const int&    getZOrder();
+    unsigned int  getIdentifier();
 
     static unsigned int s_free_id;
 
