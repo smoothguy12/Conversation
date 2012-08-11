@@ -30,4 +30,13 @@ namespace UI
 
     m_widget->setTexture(m_rt->getTexture(), true);
   }
+
+
+
+  void Label::setText(std::string text)
+  {
+    m_text->setString(text);
+
+    this->updateTexture();
+  }
 }

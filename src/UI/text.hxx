@@ -25,8 +25,8 @@ namespace UI
     void buildLegend();
     void updateTexture();
 
-    sf::Text* m_text;
-    sf::RenderTexture * m_rt;
+    sf::Text*           m_text;
+    sf::RenderTexture*  m_rt;
   };
 }
 

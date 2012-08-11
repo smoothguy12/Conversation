@@ -13,6 +13,7 @@ namespace UI
     ~Label();
     void handle(sf::Event& event);
     void updateTexture();
+    void setText(std::string text);
   };
 }
 
