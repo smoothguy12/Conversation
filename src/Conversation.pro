@@ -3,7 +3,6 @@ CONFIG += console
 CONFIG -= qt
 
 SOURCES += \
-    Game/conversation.cxx \
     main.cxx \
     Game/context.cxx \
     Game/state.cxx \
@@ -33,10 +32,13 @@ SOURCES += \
     UI/button.cxx \
     UI/layout.cxx \
     Core/event.cxx \
-    Core/eventpump.cxx
+    Core/eventpump.cxx \
+    Game/Conversation/model.cxx \
+    Game/Conversation/node.cxx \
+    Game/Conversation/view.cxx \
+    Game/Conversation/controller.cxx
 
 HEADERS += \
-    Game/conversation.hxx \
     Game/context.hxx \
     Game/state.hxx \
     Core/singleton.hxx \
@@ -66,7 +68,11 @@ HEADERS += \
     UI/label.hxx \
     UI/layout.hxx \
     Core/event.hxx \
-    Core/eventpump.hxx
+    Core/eventpump.hxx \
+    Game/Conversation/model.hxx \
+    Game/Conversation/node.hxx \
+    Game/Conversation/view.hxx \
+    Game/Conversation/controller.hxx
 
 LIBS += -L/usr/include/SFML -lsfml-system -lsfml-window -lsfml-graphics -lsfml-audio
 LIBS += -L/usr/include/jsoncpp -ljsoncpp

@@ -2,6 +2,9 @@
 #define PLAYSTATE_HXX
 #include "state.hxx"
 #include "context.hxx"
+#include "Conversation/model.hxx"
+#include "Conversation/view.hxx"
+#include "Conversation/controller.hxx"
 
 namespace Game
 {
@@ -20,6 +23,11 @@ namespace Game
 
     // Observer
     std::string toString();
+
+  private:
+    Conversation::Model* m_cmodel;
+    Conversation::View* m_cview;
+    Conversation::Controller* m_ccontroller;
   };
 }
 

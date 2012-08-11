@@ -3,14 +3,20 @@
 #include "log.hxx"
 #include "context.hxx"
 #include "Core/window.hxx"
+#include "Conversation/model.hxx"
+#include "Conversation/view.hxx"
+#include "Game/Conversation/controller.hxx"
 
 namespace Game
 {
   PlayingState::PlayingState(Context* context)
   {
-    m_active = false;
+    m_active  = false;
     m_context = context;
     m_context->enlist(this);
+    m_cmodel  = new Conversation::Model();
+    m_cview   = new Conversation::View(m_cmodel);
+    m_ccontroller = new Conversation::Controller(m_cmodel, m_cview);
 
     Core::Window::getInstance()->attach(this, sf::Event::KeyPressed);
 
@@ -22,6 +28,10 @@ namespace Game
   PlayingState::~PlayingState()
   {
     Core::Window::getInstance()->detach(this, sf::Event::KeyPressed);
+
+    delete m_ccontroller;
+    delete m_cmodel;
+    delete m_cview;
 
     log::putln(log::message, "Destroyed Game::PlayingState");
   }
